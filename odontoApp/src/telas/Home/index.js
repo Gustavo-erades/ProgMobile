@@ -1,7 +1,9 @@
-import { View, Text, Button, TouchableOpacity } from "react-native";
-import styles from '../../style/styleDefault';
-function alerta(){
-    console.log("primeiro teste do app");
+import { View, Text, TouchableOpacity } from "react-native";
+import { useState } from 'react';
+import styles from '../../style/styleHome';
+import { Dropdown } from "react-native-element-dropdown";
+function alerta() {
+    alert('Clicou!');
 }
 export default function Home() {
     return (
