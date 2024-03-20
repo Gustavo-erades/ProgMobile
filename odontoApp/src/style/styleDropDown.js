@@ -1,13 +1,11 @@
 import { StyleSheet } from 'react-native'
 const stylesDropDown = StyleSheet.create({
     dropdown: {
-      margin: 16,
+      marginBottom:10,
       height: 50,
-      borderBottomColor: 'gray',
-      borderBottomWidth: 0.5,
-    },
-    icon: {
-      marginRight: 5,
+      borderBottomColor: '#6AD9CE',
+      borderBottomWidth: 6,
+      width:'100%',
     },
     placeholderStyle: {
       fontSize: 16,
