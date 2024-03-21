@@ -40,6 +40,12 @@ const styles=StyleSheet.create(
             marginTop:20,
             height:'50%'
         },
+        contentBoxCalc:{
+            backgroundColor:'#FFF',
+            justifyContent:'center',
+            marginTop:20,
+            height:'50%',
+        },
         moreDetails:{
             marginLeft:'auto',
             marginRight:25

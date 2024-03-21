@@ -9,7 +9,7 @@ export default function Home() {
         alert('clicou!')
     }
     function chamaTelaCalc() {
-        setModalVisible(true);
+        setModalVisible(!modalVisible);
     }
     const [modalVisible, setModalVisible]=useState(false);
     return (
@@ -28,10 +28,8 @@ export default function Home() {
                     <Text style={styles.moreDetailsText} onPress={alerta}>+ Mais detalhes</Text>
                 </TouchableOpacity>
             </View>
-            <View style={styles.content} aria-hidden={modalVisible}>
-                <Modal visible={modalVisible} animationType="fade" transparent={true}>
-                    <BoxCalculo/>
-                </Modal>
+            <View style={styles.contentBoxCalc}>
+                    {modalVisible?<BoxCalculo/>:<Text style={styles.textoProvisorio}>Escolha algum anestésico para efetuar o cálculo</Text>}
             </View>
         </View>
     );
