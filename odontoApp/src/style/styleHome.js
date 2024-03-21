@@ -52,7 +52,7 @@ const styles=StyleSheet.create(
             backgroundColor:'#F2F2F2',
             padding:15,
             borderRadius:10,
-        }
+        },
     }
 );
 export default styles;

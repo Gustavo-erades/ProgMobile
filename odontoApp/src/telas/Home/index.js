@@ -3,9 +3,12 @@ import { useState } from 'react';
 import styles from '../../style/styleHome';
 import DropdownComponent from '../../components/DropDownAnestesicos';
 import BoxCalculo from '../../components/BoxCalculo';
-
+//<Text style={styles.textoProvisorio}>Escolha algum anestésico para efetuar o cálculo</Text>
 export default function Home() {
-    function alerta() {
+    function alerta(){
+        alert('clicou!')
+    }
+    function chamaTelaCalc() {
         setModalVisible(true);
     }
     const [modalVisible, setModalVisible]=useState(false);
@@ -14,7 +17,7 @@ export default function Home() {
             <View style={styles.header}>
                 <Text style={styles.titulo}>Anestésicos</Text>
                 <DropdownComponent />
-                <TouchableOpacity style={styles.botao} onPress={alerta}>
+                <TouchableOpacity style={styles.botao} onPress={chamaTelaCalc}>
                     <Text style={styles.botaoTexto}>
                         Calcular
                     </Text>
@@ -22,14 +25,13 @@ export default function Home() {
             </View>
             <View style={styles.moreDetails}>
                 <TouchableOpacity>
-                    <Text style={styles.moreDetailsText}>+ Mais detalhes</Text>
+                    <Text style={styles.moreDetailsText} onPress={alerta}>+ Mais detalhes</Text>
                 </TouchableOpacity>
             </View>
-            <View style={styles.content}>
+            <View style={styles.content} aria-hidden={modalVisible}>
                 <Modal visible={modalVisible} animationType="fade" transparent={true}>
                     <BoxCalculo/>
                 </Modal>
-                <Text style={styles.textoProvisorio}>Escolha algum anestésico para efetuar o cálculo</Text>
             </View>
         </View>
     );
