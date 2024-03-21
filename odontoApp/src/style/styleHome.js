@@ -59,6 +59,18 @@ const styles=StyleSheet.create(
             padding:15,
             borderRadius:10,
         },
+        limparTelaCalc:{
+            alignItems:'center',
+            marginTop:10,
+            backgroundColor:'#F2F2F2',
+            marginRight:'auto',
+            marginLeft:'auto',
+            borderRadius:10,
+        },
+        limparTelaCalcText:{
+            fontSize:15,
+            padding:10,
+        }
     }
 );
 export default styles;

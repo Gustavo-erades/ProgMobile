@@ -1,6 +1,9 @@
 import { Text, View, TouchableOpacity } from 'react-native';
 import stylesBoxCalc from '../../style/styleBoxCalc';
 const BoxCalculo = () => {
+    function chamaModal(){
+        alert('modal com todo o passo a passo do calculo feito');
+    }
     return (
         <View style={stylesBoxCalc.container}>
             <View style={stylesBoxCalc.card}>
@@ -22,7 +25,7 @@ const BoxCalculo = () => {
                             Recarregar
                         </Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={stylesBoxCalc.cardButton}>
+                    <TouchableOpacity style={stylesBoxCalc.cardButton} onPress={chamaModal}>
                         <Text style={stylesBoxCalc.cardButtonText}>
                             Exibir cálculo
                         </Text>

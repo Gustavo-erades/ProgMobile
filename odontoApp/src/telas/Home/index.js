@@ -6,10 +6,13 @@ import BoxCalculo from '../../components/BoxCalculo';
 //<Text style={styles.textoProvisorio}>Escolha algum anestésico para efetuar o cálculo</Text>
 export default function Home() {
     function alerta(){
-        alert('clicou!')
+        alert('modal com todas as variáveis a mais que podem ser colocadas e as já preenchidas por padrão')
     }
     function chamaTelaCalc() {
-        setModalVisible(!modalVisible);
+        setModalVisible(true);
+    }
+    function fechaTelaCalc() {
+        setModalVisible(false);
     }
     const [modalVisible, setModalVisible]=useState(false);
     return (
@@ -30,6 +33,7 @@ export default function Home() {
             </View>
             <View style={styles.contentBoxCalc}>
                     {modalVisible?<BoxCalculo/>:<Text style={styles.textoProvisorio}>Escolha algum anestésico para efetuar o cálculo</Text>}
+                    {modalVisible && <TouchableOpacity onPress={fechaTelaCalc}style={styles.limparTelaCalc}><Text style={styles.limparTelaCalcText}>Limpar</Text></TouchableOpacity>}
             </View>
         </View>
     );
