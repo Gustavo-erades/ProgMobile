@@ -26,7 +26,7 @@ export default function Home() {
                 </TouchableOpacity>
             </View>
             <View style={styles.content}>
-                <Modal visible={modalVisible} animationType="fade">
+                <Modal visible={modalVisible} animationType="fade" transparent={true}>
                     <BoxCalculo/>
                 </Modal>
                 <Text style={styles.textoProvisorio}>Escolha algum anestésico para efetuar o cálculo</Text>

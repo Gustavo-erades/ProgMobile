@@ -1,8 +1,9 @@
 import { Text, View, TouchableOpacity } from 'react-native';
 import { Card } from 'react-native-elements';
+import stylesBoxCalc from '../../style/styleBoxCalc';
 const BoxCalculo = () => {
     return (
-        <Card>
+        <Card style={stylesBoxCalc.card}>
             <Card.Title> Prilovacaína 3% </Card.Title>
             <Card.Divider />
             <Text>Máximo de Tubetes: 4.4</Text>
