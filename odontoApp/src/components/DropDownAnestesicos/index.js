@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-  import stylesDropDown from '../../style/styleDropDown'
-  import { Dropdown } from 'react-native-element-dropdown';
+import stylesDropDown from '../../style/styleDropDown';
+import { Dropdown } from 'react-native-element-dropdown';
 
   const data = [
     { label: 'Prilocaína 3%', value: '1' },

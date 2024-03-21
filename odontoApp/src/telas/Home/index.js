@@ -1,10 +1,14 @@
-import { View, Text, TouchableOpacity, Image } from "react-native";
+import { View, Text, TouchableOpacity, Modal } from "react-native";
+import { useState } from 'react';
 import styles from '../../style/styleHome';
 import DropdownComponent from '../../components/DropDownAnestesicos';
-function alerta() {
-    alert('Clicou!');
-}
+import BoxCalculo from '../../components/BoxCalculo';
+
 export default function Home() {
+    function alerta() {
+        setModalVisible(true);
+    }
+    const [modalVisible, setModalVisible]=useState(false);
     return (
         <View>
             <View style={styles.header}>
@@ -18,10 +22,13 @@ export default function Home() {
             </View>
             <View style={styles.moreDetails}>
                 <TouchableOpacity>
-                    <Text style={styles.moreDetailsText} onPress={alerta}>+ Mais detalhes</Text>
+                    <Text style={styles.moreDetailsText}>+ Mais detalhes</Text>
                 </TouchableOpacity>
             </View>
             <View style={styles.content}>
+                <Modal visible={modalVisible} animationType="fade">
+                    <BoxCalculo/>
+                </Modal>
                 <Text style={styles.textoProvisorio}>Escolha algum anestésico para efetuar o cálculo</Text>
             </View>
         </View>
