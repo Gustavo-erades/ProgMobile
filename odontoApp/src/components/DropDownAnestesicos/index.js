@@ -2,17 +2,16 @@ import React, { useState } from 'react';
 import stylesDropDown from '../../style/styleDropDown';
 import { Dropdown } from 'react-native-element-dropdown';
 
-  const data = [
-    { label: 'Prilocaína 3%', value: '1' },
-    { label: 'Mepivacaína 2%', value: '2' },
-    { label: 'Mepivacaína 3%', value: '3' },
-    { label: 'Articaína 4%', value: '4' },
-    { label: 'Lidocaína 2%', value: '5' },
-    { label: 'Lidocaína 3%', value: '6' },
-    { label: 'Bupivacaína 0.5%', value: '7' },
-  ];
-
   const DropdownComponent = () => {
+    const data = [
+      { label: 'Prilocaína 3%', value: '1' },
+      { label: 'Mepivacaína 2%', value: '2' },
+      { label: 'Mepivacaína 3%', value: '3' },
+      { label: 'Articaína 4%', value: '4' },
+      { label: 'Lidocaína 2%', value: '5' },
+      { label: 'Lidocaína 3%', value: '6' },
+      { label: 'Bupivacaína 0.5%', value: '7' },
+    ];
     const [value, setValue] = useState(null);
 
     return (

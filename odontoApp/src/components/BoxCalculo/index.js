@@ -7,7 +7,7 @@ const BoxCalculo = () => {
     return (
         <View style={stylesBoxCalc.container}>
             <View style={stylesBoxCalc.card}>
-                <Text style={stylesBoxCalc.cardTitle}> Prilovacaína 3% </Text>
+                <Text style={stylesBoxCalc.cardTitle}> Prilovacaína 3.4%  </Text>
                 <View style={stylesBoxCalc.cardContainer}>
                     <View style={stylesBoxCalc.cardTextBox}>
                         <Text style={stylesBoxCalc.cardText}>Máximo de Tubetes: 4.4</Text>
