@@ -70,7 +70,7 @@ const styles=StyleSheet.create(
         limparTelaCalcText:{
             fontSize:15,
             padding:10,
-        }
+        },
     }
 );
 export default styles;

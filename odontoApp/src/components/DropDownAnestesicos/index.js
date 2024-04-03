@@ -13,7 +13,6 @@ import { Dropdown } from 'react-native-element-dropdown';
       { label: 'Bupivacaína 0.5%', value: '7' },
     ];
     const [value, setValue] = useState(null);
-
     return (
       <Dropdown
         style={stylesDropDown.dropdown}
@@ -32,7 +31,6 @@ import { Dropdown } from 'react-native-element-dropdown';
         onChange={item => {
           setValue(item.value);
         }}
-        
       />
     );
   };

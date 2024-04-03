@@ -3,18 +3,21 @@ import { useState } from 'react';
 import styles from '../../style/styleHome';
 import DropdownComponent from '../../components/DropDownAnestesicos';
 import BoxCalculo from '../../components/BoxCalculo';
+import BoxDetalhes from './../../components/BoxDetalhes/index';
 //<Text style={styles.textoProvisorio}>Escolha algum anestésico para efetuar o cálculo</Text>
 export default function Home() {
-    function alerta(){
-        alert('modal com todas as variáveis a mais que podem ser colocadas e as já preenchidas por padrão')
+    const [mostrarBoxDetalhes, boxDetalhesFunction]=useState(null);
+    let validaBoxDetalhes=null
+    if(mostrarBoxDetalhes===true){
+        validaBoxDetalhes=false
+    }else{
+        validaBoxDetalhes=true
     }
-    function chamaTelaCalc() {
-        setModalVisible(true);
-    }
-    function fechaTelaCalc() {
-        setModalVisible(false);
-    }
+    const chamaBoxDetalhes = () => boxDetalhesFunction(validaBoxDetalhes);
+
     const [modalVisible, setModalVisible]=useState(false);
+    const chamaTelaCalc = () => setModalVisible(true);
+    const fechaTelaCalc = () => setModalVisible(false);
     return (
         <View>
             <View style={styles.header}>
@@ -28,10 +31,14 @@ export default function Home() {
             </View>
             <View style={styles.moreDetails}>
                 <TouchableOpacity>
-                    <Text style={styles.moreDetailsText} onPress={alerta}>+ Mais detalhes</Text>
+                    <TouchableOpacity onPress={chamaBoxDetalhes}>
+                        <Text style={styles.moreDetailsText} >+ Mais detalhes</Text>
+                    </TouchableOpacity>
                 </TouchableOpacity>
             </View>
+                       
             <View style={styles.contentBoxCalc}>
+                    {mostrarBoxDetalhes?<BoxDetalhes/>:<Text></Text>}
                     {modalVisible?<BoxCalculo/>:<Text style={styles.textoProvisorio}>Escolha algum anestésico para efetuar o cálculo</Text>}
                     {modalVisible && <TouchableOpacity onPress={fechaTelaCalc}style={styles.limparTelaCalc}><Text style={styles.limparTelaCalcText}>Limpar</Text></TouchableOpacity>}
             </View>
