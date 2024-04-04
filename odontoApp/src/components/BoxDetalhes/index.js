@@ -1,7 +1,7 @@
 import { Text, View, Modal } from 'react-native';
 import {useState} from 'react';
 import styleBoxDetalhes from '../../style/styleBoxDetalhes';
-import { Button, CheckBox, Divider } from 'react-native-elements';
+import {CheckBox} from 'react-native-elements';
 const BoxDetalhes=()=>{
     const [visibilidadeModal, setVisibilidadeModal]=useState(null);
     const fecharModalDetalhes=()=>{

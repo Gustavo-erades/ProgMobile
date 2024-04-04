@@ -72,15 +72,17 @@ const styles=StyleSheet.create(
             padding:10,
         },
         buttonDetalhes:{
-            backgroundColor:'#478A8B',
-            padding:15,
+            backgroundColor:'#5BBCAF',
             border:'none',
+            padding:15,
+            
         },
         buttonDetalhesText:{
-            fontSize:20,
+            fontSize:15,
             textAlign:'center',
             color:'#F2F2F2',
-            fontWeight:'bold'
+            fontWeight:'bold',
+            textTransform:'uppercase',
         }
     }
 );
