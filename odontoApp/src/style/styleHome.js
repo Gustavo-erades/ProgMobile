@@ -71,6 +71,17 @@ const styles=StyleSheet.create(
             fontSize:15,
             padding:10,
         },
+        buttonDetalhes:{
+            backgroundColor:'#478A8B',
+            padding:15,
+            border:'none',
+        },
+        buttonDetalhesText:{
+            fontSize:20,
+            textAlign:'center',
+            color:'#F2F2F2',
+            fontWeight:'bold'
+        }
     }
 );
 export default styles;

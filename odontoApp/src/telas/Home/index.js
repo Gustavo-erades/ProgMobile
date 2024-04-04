@@ -4,20 +4,22 @@ import styles from '../../style/styleHome';
 import DropdownComponent from '../../components/DropDownAnestesicos';
 import BoxCalculo from '../../components/BoxCalculo';
 import BoxDetalhes from './../../components/BoxDetalhes/index';
+import { Button } from 'react-native-elements';
 //<Text style={styles.textoProvisorio}>Escolha algum anestésico para efetuar o cálculo</Text>
 export default function Home() {
-    const [mostrarBoxDetalhes, boxDetalhesFunction]=useState(null);
-    let validaBoxDetalhes=null
-    if(mostrarBoxDetalhes===true){
-        validaBoxDetalhes=false
-    }else{
-        validaBoxDetalhes=true
-    }
-    const chamaBoxDetalhes = () => boxDetalhesFunction(validaBoxDetalhes);
 
-    const [modalVisible, setModalVisible]=useState(false);
-    const chamaTelaCalc = () => setModalVisible(true);
-    const fechaTelaCalc = () => setModalVisible(false);
+    const [modalVisibleCalc, setModalVisibleCalc]=useState(false);
+    const chamaTelaCalc = () => setModalVisibleCalc(true);
+    const fechaTelaCalc = () => setModalVisibleCalc(false);
+
+    const [visibilidadeModal, setVisibilidadeModal]=useState(null);
+   
+    const abrirModalDetalhes=()=>{
+        {setVisibilidadeModal(true)}
+    }
+    const fecharModalDetalhes=()=>{
+        {setVisibilidadeModal(false)}
+    }
     return (
         <View>
             <View style={styles.header}>
@@ -31,17 +33,24 @@ export default function Home() {
             </View>
             <View style={styles.moreDetails}>
                 <TouchableOpacity>
-                    <TouchableOpacity onPress={chamaBoxDetalhes}>
+                    <TouchableOpacity onPress={abrirModalDetalhes}>
                         <Text style={styles.moreDetailsText} >+ Mais detalhes</Text>
                     </TouchableOpacity>
                 </TouchableOpacity>
             </View>
                        
             <View style={styles.contentBoxCalc}>
-                    {mostrarBoxDetalhes?<BoxDetalhes/>:<Text></Text>}
-                    {modalVisible?<BoxCalculo/>:<Text style={styles.textoProvisorio}>Escolha algum anestésico para efetuar o cálculo</Text>}
-                    {modalVisible && <TouchableOpacity onPress={fechaTelaCalc}style={styles.limparTelaCalc}><Text style={styles.limparTelaCalcText}>Limpar</Text></TouchableOpacity>}
+                    {modalVisibleCalc?<BoxCalculo/>:<Text style={styles.textoProvisorio}>Escolha algum anestésico para efetuar o cálculo</Text>}
+                    {modalVisibleCalc && <TouchableOpacity onPress={fechaTelaCalc}style={styles.limparTelaCalc}><Text style={styles.limparTelaCalcText}>Limpar</Text></TouchableOpacity>}
             </View>
+            <Modal animationType='slide' transparent={false} visible={visibilidadeModal}>
+                <BoxDetalhes/>
+                <TouchableOpacity onPress={fecharModalDetalhes} style={styles.buttonDetalhes}>
+                    <Text style={styles.buttonDetalhesText}>
+                        Finalizar
+                    </Text>
+                </TouchableOpacity>
+            </Modal>
         </View>
     );
 }

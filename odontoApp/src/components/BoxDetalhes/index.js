@@ -1,21 +1,39 @@
-import { Text, View } from 'react-native';
+import { Text, View, Modal } from 'react-native';
+import {useState} from 'react';
 import styleBoxDetalhes from '../../style/styleBoxDetalhes';
-import { Divider } from 'react-native-elements';
+import { Button, CheckBox, Divider } from 'react-native-elements';
 const BoxDetalhes=()=>{
+    const [visibilidadeModal, setVisibilidadeModal]=useState(null);
+    const fecharModalDetalhes=()=>{
+        {setVisibilidadeModal(false)}
+    }
     return(
-        <View style={styleBoxDetalhes.fundo}>
+        <View>
+            <View style={styleBoxDetalhes.header}>
+                <Text style={styleBoxDetalhes.headerText}>Adicionar variáveis ao cálculo</Text>
+            </View>
             <View style={styleBoxDetalhes.modal}>
-                <Text style={{marginBottom:5}}>Mais variáveis para o cálculo</Text>
-                <Divider style={{marginBottom:5}}/>
-                <View>
-                    <Text>* Mais variáveis para o cálculo 1</Text>
-                    <Text>* Mais variáveis para o cálculo 2</Text>
-                    <Text>* Mais variáveis para o cálculo 3</Text>
-                    <Text>* Mais variáveis para o cálculo 4</Text>
-                    <Text>* Mais variáveis para o cálculo 5</Text>
+                <View style={styleBoxDetalhes.checkboxWrapper}>
+                    <CheckBox required={true} style={styleBoxDetalhes.CheckBox}/>
+                    <Text style={styleBoxDetalhes.checkboxText}>variável 1</Text>
+                </View>
+                <View style={styleBoxDetalhes.checkboxWrapper}>
+                    <CheckBox required={true} style={styleBoxDetalhes.CheckBox}/>
+                    <Text style={styleBoxDetalhes.checkboxText}>variável 2</Text>
+                </View>
+                <View style={styleBoxDetalhes.checkboxWrapper}>
+                    <CheckBox required={true} style={styleBoxDetalhes.CheckBox}/>
+                    <Text style={styleBoxDetalhes.checkboxText}>variável 3</Text>
+                </View>
+                <View style={styleBoxDetalhes.checkboxWrapper}>
+                    <CheckBox required={true} style={styleBoxDetalhes.CheckBox}/>
+                    <Text style={styleBoxDetalhes.checkboxText}>variável 4</Text>
                 </View>
             </View>
+           
         </View>
+       
+        
     )
 }
 export default BoxDetalhes
