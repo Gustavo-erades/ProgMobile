@@ -16,7 +16,7 @@ const styleBoxDetalhes=StyleSheet.create({
         marginBottom:30
     }, 
     titleInput:{
-        fontSize:20,
+        fontSize:18,
         fontWeight:'bold',
         paddingLeft:10,
         marginTop:20
