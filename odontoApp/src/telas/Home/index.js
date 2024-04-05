@@ -45,6 +45,11 @@ export default function Home() {
             </View>
             <Modal animationType='slide' transparent={false} visible={visibilidadeModal}>
                 <BoxDetalhes/>
+                <TouchableOpacity style={styles.buttonTabelaAnestesicos} onPress={()=>{alert("tabela de anestésicos com doses máximas, etc.")}}>
+                    <Text style={styles.buttonTabelaAnestesicosText}>
+                        Tabela de anestésicos
+                    </Text>
+                </TouchableOpacity>
                 <TouchableOpacity onPress={fecharModalDetalhes} style={styles.buttonDetalhes}>
                     <Text style={styles.buttonDetalhesText}>
                         Finalizar

@@ -86,6 +86,23 @@ const styles=StyleSheet.create(
             textAlign:'center',
             color:'#000',
             fontWeight:'bold'
+        },
+        buttonTabelaAnestesicos:{
+            marginTop:2,
+            marginBottom:30,
+            borderColor:'#BFBFBF',
+            borderWidth:0.8,
+            padding:18,
+            marginLeft:'auto',
+            marginRight:'auto',
+            width:'95%',
+            borderRadius:3,
+            backgroundColor:'#F2F2F2',
+        },
+        buttonTabelaAnestesicosText:{
+            fontWeight:'bold',
+            color:'#545759',
+            textAlign:'center'
         }
     }
 );

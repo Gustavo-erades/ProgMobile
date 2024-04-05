@@ -1,39 +1,40 @@
-import { Text, View, Modal } from 'react-native';
+import { Text, View,TextInput} from 'react-native';
 import {useState} from 'react';
 import styleBoxDetalhes from '../../style/styleBoxDetalhes';
-import {CheckBox} from 'react-native-elements';
+import { CheckBox, Button } from 'react-native-elements';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 const BoxDetalhes=()=>{
-    const [visibilidadeModal, setVisibilidadeModal]=useState(null);
-    const fecharModalDetalhes=()=>{
-        {setVisibilidadeModal(false)}
-    }
+    const [checkboxMarcado, setCheckboxMarcado]=useState(false);
+    marcarCheckbox=()=>setCheckboxMarcado(!checkboxMarcado)
     return(
         <View>
             <View style={styleBoxDetalhes.header}>
-                <Text style={styleBoxDetalhes.headerText}>Adicionar variáveis ao cálculo</Text>
+                <Text style={styleBoxDetalhes.headerText}>Modificar variáveis do cálculo</Text>
             </View>
-            <View style={styleBoxDetalhes.modal}>
-                <View style={styleBoxDetalhes.checkboxWrapper}>
-                    <CheckBox required={true} style={styleBoxDetalhes.CheckBox}/>
-                    <Text style={styleBoxDetalhes.checkboxText}>variável 1</Text>
-                </View>
-                <View style={styleBoxDetalhes.checkboxWrapper}>
-                    <CheckBox required={true} style={styleBoxDetalhes.CheckBox}/>
-                    <Text style={styleBoxDetalhes.checkboxText}>variável 2</Text>
-                </View>
-                <View style={styleBoxDetalhes.checkboxWrapper}>
-                    <CheckBox required={true} style={styleBoxDetalhes.CheckBox}/>
-                    <Text style={styleBoxDetalhes.checkboxText}>variável 3</Text>
-                </View>
-                <View style={styleBoxDetalhes.checkboxWrapper}>
-                    <CheckBox required={true} style={styleBoxDetalhes.CheckBox}/>
-                    <Text style={styleBoxDetalhes.checkboxText}>variável 4</Text>
-                </View>
+            <View style={styleBoxDetalhes.areaInputs}>
+               <View>
+                    <Text style={styleBoxDetalhes.titleInput}>
+                        Peso do paciente:
+                    </Text>
+                    <TextInput placeholder="60Kg" keyboardType='numeric' style={styleBoxDetalhes.input}/>
+               </View>
+               <View>
+                    <Text style={styleBoxDetalhes.titleInput}>
+                        Dose máxima por Kg:
+                    </Text>
+                    <TextInput placeholder="Consulte a tebela de anestésicos" keyboardType='numeric' style={styleBoxDetalhes.input} />
+               </View>
+               <View>
+                    <Text style={styleBoxDetalhes.titleInput}>
+                        Volume do tubete:
+                    </Text>
+                    <TextInput placeholder="1.8mg" keyboardType='numeric' style={styleBoxDetalhes.input} />
+               </View>
             </View>
-           
-        </View>
-       
-        
+            <View style={styleBoxDetalhes.checkboxView}>
+                <CheckBox checked={checkboxMarcado} title="Alterar cálculo padrão" size={32} checkedColor='#5BBCAF' uncheckedColor='red' required onPress={marcarCheckbox}/>
+            </View>
+        </View>        
     )
 }
 export default BoxDetalhes

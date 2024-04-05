@@ -1,16 +1,5 @@
 import {StyleSheet} from 'react-native'
 const styleBoxDetalhes=StyleSheet.create({
-    modal:{
-        alignItems:'center',
-    },
-    checkboxWrapper: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        paddingVertical: 5,
-    },
-    checkboxText:{
-        fontSize:20,
-    },
     header:{
         padding:20,
         backgroundColor:'#5BBCAF',
@@ -21,6 +10,33 @@ const styleBoxDetalhes=StyleSheet.create({
         fontWeight:'bold',
         color:'#F2F2F2',
         textAlign:'center',
-    }
+    },
+    areaInputs:{
+        marginTop:30,
+        marginBottom:30
+    }, 
+    titleInput:{
+        fontSize:20,
+        fontWeight:'bold',
+        paddingLeft:10,
+        marginTop:20
+    },
+    input:{
+        marginLeft:10,
+        marginRight:10,
+        marginTop:5,
+        fontSize:18,
+        fontWeight:'bold',
+        borderWidth:1,
+        borderColor:'#F2F2F2',
+        height:50,
+        borderRadius:20,
+        textAlign:'center',
+    },
+    checkboxView:{
+        alignItems:'left',
+        marginBottom:10,
+        marginTop:10
+    },
 })
 export default styleBoxDetalhes
