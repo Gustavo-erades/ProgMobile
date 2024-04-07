@@ -2,7 +2,6 @@ import { Text, View,TextInput} from 'react-native';
 import {useState} from 'react';
 import styleBoxDetalhes from '../../style/styleBoxDetalhes';
 import { CheckBox, Button } from 'react-native-elements';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 const BoxDetalhes=()=>{
     const [checkboxMarcado, setCheckboxMarcado]=useState(false);
     marcarCheckbox=()=>setCheckboxMarcado(!checkboxMarcado)

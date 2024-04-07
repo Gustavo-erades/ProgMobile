@@ -7,7 +7,9 @@ const BoxCalculo = () => {
     return (
         <View style={stylesBoxCalc.container}>
             <View style={stylesBoxCalc.card}>
-                <Text style={stylesBoxCalc.cardTitle}> Prilovacaína 3.4%  </Text>
+                <Text style={stylesBoxCalc.cardTitle}> 
+                    {this.props.route.params.nome}
+                </Text>
                 <View style={stylesBoxCalc.cardContainer}>
                     <View style={stylesBoxCalc.cardTextBox}>
                         <Text style={stylesBoxCalc.cardText}>Máximo de Tubetes: 4.4</Text>
@@ -35,4 +37,4 @@ const BoxCalculo = () => {
         </View>
     );
 };
-export default BoxCalculo;
+export default BoxCalculo(props);
