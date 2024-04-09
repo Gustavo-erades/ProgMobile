@@ -9,7 +9,6 @@ export default function Home() {
     const [modalVisibleCalc, setModalVisibleCalc]=useState(false);
     const chamaTelaCalc = () => {
         setModalVisibleCalc(true)
-        this.props.navigation.navigate('BoxCalculo',{nome:'teste 1'})
     };
     const fechaTelaCalc = () => setModalVisibleCalc(false);
 

@@ -8,7 +8,7 @@ const BoxCalculo = () => {
         <View style={stylesBoxCalc.container}>
             <View style={stylesBoxCalc.card}>
                 <Text style={stylesBoxCalc.cardTitle}> 
-                    {this.props.route.params.nome}
+                    Teste
                 </Text>
                 <View style={stylesBoxCalc.cardContainer}>
                     <View style={stylesBoxCalc.cardTextBox}>
@@ -37,4 +37,4 @@ const BoxCalculo = () => {
         </View>
     );
 };
-export default BoxCalculo(props);
+export default BoxCalculo;
