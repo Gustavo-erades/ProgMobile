@@ -9,17 +9,17 @@ export default function  BoxCalculo({dadosAnestesico}){
         <View style={stylesBoxCalc.container}>
             <View style={stylesBoxCalc.card}>
                 <Text style={stylesBoxCalc.cardTitle}> 
-                    {dadosAnestesico[0]}
+                    Nome do anestésico
                 </Text>
                 <View style={stylesBoxCalc.cardContainer}>
                     <View style={stylesBoxCalc.cardTextBox}>
                         <Text style={stylesBoxCalc.cardText}>Máximo de Tubetes: 4.4</Text>
-                        <Text style={stylesBoxCalc.cardText}>Máximo de mg: 240mg</Text>
+                        <Text style={stylesBoxCalc.cardText}>Máximo de mg: {dadosAnestesico[1]}mg</Text>
                         <Text style={stylesBoxCalc.cardText}>Miligrama por Tubetes: 54mg</Text>
                     </View>
                     <View style={stylesBoxCalc.cardInto}>
                         <Text style={stylesBoxCalc.cardIntoText}>*Tubete com {dadosAnestesico[2]}mg</Text>
-                        <Text style={stylesBoxCalc.cardIntoText}>*Paciente de {dadosAnestesico[1]}kg</Text>
+                        <Text style={stylesBoxCalc.cardIntoText}>*Paciente de {dadosAnestesico[0]}kg</Text>
                     </View>
                 </View>
                 <View style={stylesBoxCalc.cardButtonsFooter}>
