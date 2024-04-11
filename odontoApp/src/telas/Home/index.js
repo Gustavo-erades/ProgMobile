@@ -9,6 +9,7 @@ export default function Home() {
     const [modalVisibleCalc, setModalVisibleCalc]=useState(false);
     const chamaTelaCalc = () => {
         setModalVisibleCalc(true)
+        dadosAnestesico()
     };
     const fechaTelaCalc = () => setModalVisibleCalc(false);
 
@@ -44,10 +45,7 @@ export default function Home() {
                 </TouchableOpacity>
             </View>
             <View style={styles.contentBoxCalc}>
-
-                    <TouchableOpacity onPress={()=>dadosAnestesico()}><Text>teste</Text></TouchableOpacity>
                     {modalVisibleCalc?<BoxCalculo dadosAnestesico={dataBoxCalculo}/>:<Text style={styles.textoProvisorio}>Escolha algum anestésico para efetuar o cálculo</Text>}
-                    
                     {modalVisibleCalc && <TouchableOpacity onPress={fechaTelaCalc}style={styles.limparTelaCalc}><Text style={styles.limparTelaCalcText}>Limpar</Text></TouchableOpacity>}
             </View>
             <Modal animationType='slide' transparent={false} visible={visibilidadeModal}>
