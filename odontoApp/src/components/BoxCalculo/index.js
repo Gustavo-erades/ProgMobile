@@ -1,14 +1,15 @@
 import { Text, View, TouchableOpacity } from 'react-native';
 import stylesBoxCalc from '../../style/styleBoxCalc';
-const BoxCalculo = () => {
+export default function  BoxCalculo({dadosAnestesico}){
     function chamaModal(){
         alert('modal com todo o passo a passo do calculo feito');
     }
+    
     return (
         <View style={stylesBoxCalc.container}>
             <View style={stylesBoxCalc.card}>
                 <Text style={stylesBoxCalc.cardTitle}> 
-                    Teste
+                    {dadosAnestesico[0]}
                 </Text>
                 <View style={stylesBoxCalc.cardContainer}>
                     <View style={stylesBoxCalc.cardTextBox}>
@@ -17,8 +18,8 @@ const BoxCalculo = () => {
                         <Text style={stylesBoxCalc.cardText}>Miligrama por Tubetes: 54mg</Text>
                     </View>
                     <View style={stylesBoxCalc.cardInto}>
-                        <Text style={stylesBoxCalc.cardIntoText}>*Tubete com 1.8mg</Text>
-                        <Text style={stylesBoxCalc.cardIntoText}>*Paciente de 40kg</Text>
+                        <Text style={stylesBoxCalc.cardIntoText}>*Tubete com {dadosAnestesico[2]}mg</Text>
+                        <Text style={stylesBoxCalc.cardIntoText}>*Paciente de {dadosAnestesico[1]}kg</Text>
                     </View>
                 </View>
                 <View style={stylesBoxCalc.cardButtonsFooter}>
@@ -37,4 +38,3 @@ const BoxCalculo = () => {
         </View>
     );
 };
-export default BoxCalculo;

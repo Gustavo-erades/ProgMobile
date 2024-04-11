@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, Modal } from "react-native";
+import { View, Text, TouchableOpacity, Modal, Button } from "react-native";
 import { useState } from 'react';
 import styles from '../../style/styleHome';
 import DropdownComponent from '../../components/DropDownAnestesicos';
@@ -20,6 +20,11 @@ export default function Home() {
     const fecharModalDetalhes=()=>{
         {setVisibilidadeModal(false)}
     }
+    const [dataBoxCalculo, setDataBoxCalculo]=useState('');
+    const dadosAnestesico=()=>{
+        const lista=["nome do anestésico","peso","volume"]
+        setDataBoxCalculo(lista)
+    }
     return (
         <View>
             <View style={styles.header}>
@@ -38,9 +43,11 @@ export default function Home() {
                     </TouchableOpacity>
                 </TouchableOpacity>
             </View>
-                       
             <View style={styles.contentBoxCalc}>
-                    {modalVisibleCalc?<BoxCalculo/>:<Text style={styles.textoProvisorio}>Escolha algum anestésico para efetuar o cálculo</Text>}
+
+                    <TouchableOpacity onPress={()=>dadosAnestesico()}><Text>teste</Text></TouchableOpacity>
+                    {modalVisibleCalc?<BoxCalculo dadosAnestesico={dataBoxCalculo}/>:<Text style={styles.textoProvisorio}>Escolha algum anestésico para efetuar o cálculo</Text>}
+                    
                     {modalVisibleCalc && <TouchableOpacity onPress={fechaTelaCalc}style={styles.limparTelaCalc}><Text style={styles.limparTelaCalcText}>Limpar</Text></TouchableOpacity>}
             </View>
             <Modal animationType='slide' transparent={false} visible={visibilidadeModal}>
