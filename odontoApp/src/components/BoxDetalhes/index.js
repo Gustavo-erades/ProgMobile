@@ -1,10 +1,11 @@
-import { Text, View,TextInput} from 'react-native';
+import { Text, View,TextInput, TouchableOpacity} from 'react-native';
 import {useState} from 'react';
 import styleBoxDetalhes from '../../style/styleBoxDetalhes';
 import { CheckBox, Button } from 'react-native-elements';
-const BoxDetalhes=()=>{
+export default function BoxDetalhes({childToParent}){
     const [checkboxMarcado, setCheckboxMarcado]=useState(false);
     marcarCheckbox=()=>setCheckboxMarcado(!checkboxMarcado)
+    const dataChildToParent="teste child to parent 2"
     return(
         <View>
             <View style={styleBoxDetalhes.header}>
@@ -33,7 +34,11 @@ const BoxDetalhes=()=>{
             <View style={styleBoxDetalhes.checkboxView}>
                 <CheckBox checked={checkboxMarcado} title="Alterar cálculo padrão" size={32} checkedColor='#5BBCAF' uncheckedColor='red' required onPress={marcarCheckbox}/>
             </View>
+            <TouchableOpacity style={styleBoxDetalhes.buttonTabelaAnestesicos} onPress={()=>childToParent(dataChildToParent)}>
+                    <Text style={styleBoxDetalhes.buttonTabelaAnestesicosText}>
+                        Tabela de anestésicos
+                    </Text>
+            </TouchableOpacity>
         </View>        
     )
 }
-export default BoxDetalhes
