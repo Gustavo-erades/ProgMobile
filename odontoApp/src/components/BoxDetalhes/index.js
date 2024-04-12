@@ -1,7 +1,6 @@
 import { Text, View,TextInput, TouchableOpacity} from 'react-native';
 import {useState} from 'react';
 import styleBoxDetalhes from '../../style/styleBoxDetalhes';
-import styles from '../../style/styleHome';
 import { CheckBox} from 'react-native-elements';
 export default function BoxDetalhes({childToParent}){
     //check box
@@ -44,7 +43,7 @@ export default function BoxDetalhes({childToParent}){
             <View style={styleBoxDetalhes.checkboxView}>
                 <CheckBox checked={checkboxMarcado} title="Alterar cálculo padrão" size={32} checkedColor='#5BBCAF' uncheckedColor='red' required onPress={marcarCheckbox}/>
             </View>
-            <TouchableOpacity style={styleBoxDetalhes.buttonTabelaAnestesicos}>
+            <TouchableOpacity style={styleBoxDetalhes.buttonTabelaAnestesicos} onPress={()=>{alert("tabela de anestésicos")}}>
                     <Text style={styleBoxDetalhes.buttonTabelaAnestesicosText}>
                         Tabela de anestésicos
                     </Text>
