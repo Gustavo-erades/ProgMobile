@@ -6,12 +6,16 @@ import { CheckBox} from 'react-native-elements';
 export default function BoxDetalhes({childToParent}){
     //check box
     const [checkboxMarcado, setCheckboxMarcado]=useState(false);
-    marcarCheckbox=()=>setCheckboxMarcado(!checkboxMarcado)
+    function marcarCheckbox(){
+        setCheckboxMarcado(!checkboxMarcado)
+        childToParent(dataChildToParent)
+    }
     //dados dos inputs
     const [pesoInput, setPesoInput]=useState('')
     const [doseInput, setDoseInput]=useState('')
     const [tubeteInput, setTubeteInput]=useState('')
-    const dataChildToParent=[pesoInput,doseInput,tubeteInput, false]
+    const dataChildToParent=[pesoInput,doseInput,tubeteInput]
+    
     return(
         <View>
             <View style={styleBoxDetalhes.header}>
@@ -44,11 +48,6 @@ export default function BoxDetalhes({childToParent}){
                     <Text style={styleBoxDetalhes.buttonTabelaAnestesicosText}>
                         Tabela de anestésicos
                     </Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={()=>childToParent(dataChildToParent)} style={styles.buttonDetalhes}>
-                <Text style={styles.buttonDetalhesText}>
-                    Finalizar
-                </Text>
             </TouchableOpacity>
         </View>        
     )

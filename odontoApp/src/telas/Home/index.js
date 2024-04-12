@@ -15,7 +15,9 @@ export default function Home() {
     const [visibilidadeModal, setVisibilidadeModal]=useState(null);
     const abrirModalDetalhes=()=>{
         setVisibilidadeModal(true)
-        dataChildToParent[3]=true
+    }
+    const fecharModalDetalhes=()=>{
+        setVisibilidadeModal(false)
     }
     //parent to child
     const [dataBoxCalculo, setDataBoxCalculo]=useState('');
@@ -50,10 +52,15 @@ export default function Home() {
                     {modalVisibleCalc?<BoxCalculo dadosAnestesico={dataBoxCalculo}/>:<Text style={styles.textoProvisorio}>Escolha algum anestésico para efetuar o cálculo</Text>}
                     {modalVisibleCalc && <TouchableOpacity onPress={fechaTelaCalc}style={styles.limparTelaCalc}><Text style={styles.limparTelaCalcText}>Limpar</Text></TouchableOpacity>}
             </View>
-            <Modal animationType='slide' transparent={false} visible={visibilidadeModal==true&&dataChildToParent[3]!=false?true:false}>
+            <Modal animationType='slide' transparent={false} visible={visibilidadeModal}>
                 <BoxDetalhes childToParent={childToParent}/>
+                <TouchableOpacity style={styles.buttonDetalhes} onPress={fecharModalDetalhes}>
+                    <Text style={styles.buttonDetalhesText}>
+                        Finalizar
+                    </Text>
+                </TouchableOpacity>
             </Modal>
-            
+
         </View>
     );
 }
