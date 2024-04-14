@@ -72,7 +72,6 @@ export default function Home() {
                     </Text>
                 </TouchableOpacity>
             </Modal>
-
         </View>
     );
 }
