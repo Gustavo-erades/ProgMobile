@@ -1,4 +1,4 @@
-import { Text, View,TextInput, TouchableOpacity} from 'react-native';
+import { Text, View,TextInput, TouchableOpacity, Alert} from 'react-native';
 import {useState} from 'react';
 import styleBoxDetalhes from '../../style/styleBoxDetalhes';
 import { CheckBox} from 'react-native-elements';
@@ -7,7 +7,11 @@ export default function BoxDetalhes({childToParent}){
     const [checkboxMarcado, setCheckboxMarcado]=useState(false);
     function marcarCheckbox(){
         setCheckboxMarcado(!checkboxMarcado)
-        childToParent(dataChildToParent)
+        if(dataChildToParent[0]!=''||dataChildToParent[1]!=''||dataChildToParent[2]!=''){
+            childToParent(dataChildToParent)
+        }else{
+            Alert.alert("Nenhum valor passado!","Preencha ao menos um campo para alterar o cálculo anterior")
+        }
     }
     //dados dos inputs
     const [pesoInput, setPesoInput]=useState('')
@@ -43,7 +47,7 @@ export default function BoxDetalhes({childToParent}){
             <View style={styleBoxDetalhes.checkboxView}>
                 <CheckBox checked={checkboxMarcado} title="Alterar cálculo padrão" size={32} checkedColor='#5BBCAF' uncheckedColor='red' required onPress={marcarCheckbox}/>
             </View>
-            <TouchableOpacity style={styleBoxDetalhes.buttonTabelaAnestesicos} onPress={()=>{alert("tabela de anestésicos")}}>
+            <TouchableOpacity style={styleBoxDetalhes.buttonTabelaAnestesicos} onPress={()=>{Alert.alert("Falta fazer!","tabela de anestésicos")}}>
                     <Text style={styleBoxDetalhes.buttonTabelaAnestesicosText}>
                         Tabela de anestésicos
                     </Text>

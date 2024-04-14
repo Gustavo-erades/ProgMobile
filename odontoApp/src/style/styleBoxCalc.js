@@ -4,6 +4,8 @@ const styleBoxCalc=StyleSheet.create(
         container:{
             flex:1,
             justifyContent:'center',
+            marginTop:10,
+            marginBottom:15,
         },
         card:{
             backgroundColor:'#96D9D2',
@@ -11,8 +13,8 @@ const styleBoxCalc=StyleSheet.create(
             marginLeft:'auto',
             marginRight:'auto',
             width:'90%',
-            paddingTop:15,
-            paddingBottom:15,
+            paddingTop:25,
+            paddingBottom:25,
             justifyContent:'center',
         },
         cardTitle:{

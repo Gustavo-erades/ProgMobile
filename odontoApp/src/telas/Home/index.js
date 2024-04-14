@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, Modal, Button } from "react-native";
+import { View, Text, TouchableOpacity, Modal, Alert} from "react-native";
 import { useState } from 'react';
 import styles from '../../style/styleHome';
 import DropdownComponent from '../../components/DropDownAnestesicos';
@@ -8,8 +8,12 @@ import BoxDetalhes from './../../components/BoxDetalhes/index';
 export default function Home() {
     const [modalVisibleCalc, setModalVisibleCalc]=useState(false);
     const chamaTelaCalc = () => {
-        setModalVisibleCalc(true)
-        dadosAnestesico()
+        if(dataChildToParent[0]!=''||dataChildToParent[1]!=''||dataChildToParent[2]!=''){
+            setModalVisibleCalc(true)
+            dadosAnestesico()
+        }else{
+            Alert.alert("Nenhum valor passado", "informe ao menos um valor para o cálculo poder ser efetuado")
+        }
     };
     const fechaTelaCalc = () => setModalVisibleCalc(false);
     const [visibilidadeModal, setVisibilidadeModal]=useState(null);
@@ -18,6 +22,7 @@ export default function Home() {
     }
     const fecharModalDetalhes=()=>{
         setVisibilidadeModal(false)
+        chamaTelaCalc()
     }
     //parent to child
     const [dataBoxCalculo, setDataBoxCalculo]=useState('');

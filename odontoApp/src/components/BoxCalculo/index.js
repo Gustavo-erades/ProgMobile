@@ -1,8 +1,8 @@
-import { Text, View, TouchableOpacity } from 'react-native';
+import { Text, View, TouchableOpacity, Alert } from 'react-native';
 import stylesBoxCalc from '../../style/styleBoxCalc';
 export default function  BoxCalculo({dadosAnestesico}){
     function chamaModal(){
-        alert('modal com todo o passo a passo do calculo feito');
+        Alert.alert("Falta fazer!",'modal com todo o passo a passo do calculo feito');
     }
     //cálculo considerando (incialmente) o Prilo 3%
     //1 tubete ----- X ml
@@ -13,6 +13,8 @@ export default function  BoxCalculo({dadosAnestesico}){
     maxDosePorPeso=6*dadosAnestesico[0]
     //1 tubete tem 1 mlPortubete (calculando o máximo de tubetes)
     quantTubete=(maxDosePorPeso/mlPorTubete).toFixed(1)
+    //variáveis temporárias
+    valTemp1=dadosAnestesico[1]
     return (
         <View style={stylesBoxCalc.container}>
             <View style={stylesBoxCalc.card}>
@@ -33,7 +35,7 @@ export default function  BoxCalculo({dadosAnestesico}){
                 </View>
                 <View style={stylesBoxCalc.cardButtonsFooter}>
                     <TouchableOpacity style={stylesBoxCalc.cardButton} onPress={()=>{
-                        alert("faz um SELECT e retornar os dados atualizados das tabelas") 
+                        Alert.alert("Falta fazer!","faz um SELECT e retorna os dados atualizados das tabelas") 
                     }}>
                         <Text style={stylesBoxCalc.cardButtonText}>
                             Recarregar
