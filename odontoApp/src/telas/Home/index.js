@@ -23,6 +23,8 @@ export default function Home() {
     const [dataBoxCalculo, setDataBoxCalculo]=useState('');
     const dadosAnestesico=()=>{
         const lista=dataChildToParent
+        tam=lista.length
+        lista[3]=dataChildToParent2
         setDataBoxCalculo(lista)
     }
     //child to parent
@@ -30,11 +32,16 @@ export default function Home() {
     const childToParent=(childData)=>{
         setChildToParent(childData)
     }
+    //child to parent 2 --> referente ao elemento dropdown 
+    const [dataChildToParent2, setChildToParent2]=useState('');
+    const childToParent2=(childData)=>{
+        setChildToParent2(childData)
+    }
     return (
         <View>
             <View style={styles.header}>
                 <Text style={styles.titulo}>Anestésicos</Text>
-                <DropdownComponent />
+                <DropdownComponent childToParent2={childToParent2} />
                 <TouchableOpacity style={styles.botao} onPress={chamaTelaCalc}>
                     <Text style={styles.botaoTexto}>
                         Calcular

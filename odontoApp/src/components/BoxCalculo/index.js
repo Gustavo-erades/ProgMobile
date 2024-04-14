@@ -17,7 +17,7 @@ export default function  BoxCalculo({dadosAnestesico}){
         <View style={stylesBoxCalc.container}>
             <View style={stylesBoxCalc.card}>
                 <Text style={stylesBoxCalc.cardTitle}> 
-                    Nome do anestésico
+                    {dadosAnestesico[3]}
                 </Text>
                 <View style={stylesBoxCalc.cardContainer}>
                     <View style={stylesBoxCalc.cardTextBox}>

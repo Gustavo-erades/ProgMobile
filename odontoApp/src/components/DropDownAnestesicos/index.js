@@ -2,17 +2,20 @@ import React, { useState } from 'react';
 import stylesDropDown from '../../style/styleDropDown';
 import { Dropdown } from 'react-native-element-dropdown';
 
-  const DropdownComponent = () => {
+  export default function DropdownComponent(
+    {childToParent2}
+  ){
     const data = [
-      { label: 'Prilocaína 3%', value: '1' },
-      { label: 'Mepivacaína 2%', value: '2' },
-      { label: 'Mepivacaína 3%', value: '3' },
-      { label: 'Articaína 4%', value: '4' },
-      { label: 'Lidocaína 2%', value: '5' },
-      { label: 'Lidocaína 3%', value: '6' },
-      { label: 'Bupivacaína 0.5%', value: '7' },
+      { label: 'Prilocaína 3%', value: 'Prilocaína 3%' },
+      { label: 'Mepivacaína 2%', value: 'Mepivacaína 2%' },
+      { label: 'Mepivacaína 3%', value: 'Mepivacaína 3%' },
+      { label: 'Articaína 4%', value: 'Articaína 4%' },
+      { label: 'Lidocaína 2%', value: 'Lidocaína 2%' },
+      { label: 'Lidocaína 3%', value: 'Lidocaína 3%' },
+      { label: 'Bupivacaína 0.5%', value: 'Bupivacaína 0.5%' },
     ];
     const [value, setValue] = useState(null);
+    childToParent2(value)
     return (
       <Dropdown
         style={stylesDropDown.dropdown}
@@ -34,5 +37,3 @@ import { Dropdown } from 'react-native-element-dropdown';
       />
     );
   };
-
-  export default DropdownComponent;
