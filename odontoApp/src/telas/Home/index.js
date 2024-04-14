@@ -38,7 +38,7 @@ export default function Home() {
         setChildToParent(childData)
     }
     //child to parent 2 --> referente ao elemento dropdown 
-    const [dataChildToParent2, setChildToParent2]=useState('');
+    const [dataChildToParent2, setChildToParent2]=useState(null);
     const childToParent2=(childData)=>{
         setChildToParent2(childData)
     }
