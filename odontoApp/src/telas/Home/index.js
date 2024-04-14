@@ -8,7 +8,7 @@ import BoxDetalhes from './../../components/BoxDetalhes/index';
 export default function Home() {
     const [modalVisibleCalc, setModalVisibleCalc]=useState(false);
     const chamaTelaCalc = () => {
-        if(dataChildToParent[0]!=''||dataChildToParent[1]!=''||dataChildToParent[2]!=''){
+        if(dataChildToParent[0]!=null||dataChildToParent[1]!=null||dataChildToParent[2]!=null){
             setModalVisibleCalc(true)
             dadosAnestesico()
         }else{
