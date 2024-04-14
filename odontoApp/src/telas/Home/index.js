@@ -15,7 +15,13 @@ export default function Home() {
             Alert.alert("Nenhum valor passado", "informe ao menos um valor para o cálculo poder ser efetuado")
         }
     };
-    const fechaTelaCalc = () => setModalVisibleCalc(false);
+    const fechaTelaCalc = () => {
+        setModalVisibleCalc(false);
+        const max=dataChildToParent.length-1
+        for(let x=0; x<=max; x++){
+            dataChildToParent[x]=null
+        }
+    }
     const [visibilidadeModal, setVisibilidadeModal]=useState(null);
     const abrirModalDetalhes=()=>{
         setVisibilidadeModal(true)

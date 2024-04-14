@@ -10,7 +10,7 @@ export default function BoxDetalhes({childToParent}){
         if(dataChildToParent[0]!=''||dataChildToParent[1]!=''||dataChildToParent[2]!=''){
             childToParent(dataChildToParent)
         }else{
-            Alert.alert("Nenhum valor passado!","Preencha ao menos um campo para alterar o cálculo anterior")
+            Alert.alert("Nenhum valor passado!","Preencha ao menos um campo para alterar o cálculo")
         }
     }
     //dados dos inputs
