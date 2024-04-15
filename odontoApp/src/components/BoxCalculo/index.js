@@ -8,13 +8,12 @@ export default function  BoxCalculo({dadosAnestesico}){
     //1 tubete ----- X ml
     //1 ml     ----- 30 mg
     //X ml     ----- mlPorTubete
-    mlPorTubete=30*dadosAnestesico[2] //X==dadosAnestesico[2]
+    porcentagem=dadosAnestesico[3].replace(/[^0-9]/g, '')
+    mlPorTubete=porcentagem*10*dadosAnestesico[2] //X==dadosAnestesico[2]
     //dose --> 6 mg/kg 300mg
-    maxDosePorPeso=6*dadosAnestesico[0]
+    maxDosePorPeso=dadosAnestesico[1]*dadosAnestesico[0]
     //1 tubete tem 1 mlPortubete (calculando o máximo de tubetes)
     quantTubete=(maxDosePorPeso/mlPorTubete).toFixed(1)
-    //variáveis temporárias
-    valTemp1=dadosAnestesico[1]
     return (
         <View style={stylesBoxCalc.container}>
             <View style={stylesBoxCalc.card}>

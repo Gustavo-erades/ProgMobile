@@ -4,7 +4,6 @@ import styles from '../../style/styleHome';
 import DropdownComponent from '../../components/DropDownAnestesicos';
 import BoxCalculo from '../../components/BoxCalculo';
 import BoxDetalhes from './../../components/BoxDetalhes/index';
-//<Text style={styles.textoProvisorio}>Escolha algum anestésico para efetuar o cálculo</Text>
 export default function Home() {
     const [modalVisibleCalc, setModalVisibleCalc]=useState(false);
     const chamaTelaCalc = () => {
