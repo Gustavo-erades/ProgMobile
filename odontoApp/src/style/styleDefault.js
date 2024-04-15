@@ -4,13 +4,28 @@ const styles=StyleSheet.create({
         flexDirection:'row',
         alignItems:'center',
         justifyContent:'space-around',
-        marginTop:50
+        marginTop:50,
+        //backgroundColor:'#F2F2F2',
     },
     button:{
         padding:10,
         borderBottomColor:'#6AD9CE',
-        borderBottomWidth:3
+        borderBottomWidth:3,
         
+    },
+    buttonInativo:{
+        padding:10,
+        //borderBottomColor:'#8c8c8c',
+        //borderBottomWidth:3,
+    },
+    botaoTexto:{
+        color:'#6AD9CE',
+        fontWeight:'bold',
+        fontSize:15
+    },
+    botaoTextoInativo:{
+        color:'#8c8c8c',
+        fontSize:15
     }
 })
 export default styles;

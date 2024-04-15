@@ -19,7 +19,7 @@ export default function  BoxCalculo({dadosAnestesico}){
                         <Text style={stylesBoxCalc.cardText}>Máximo de Tubetes: {quantTubete}</Text>
                         <Text style={stylesBoxCalc.cardText}>Máximo de mg: {dadosAnestesico[1]}mg</Text>
                         <Text style={stylesBoxCalc.cardText}>Miligrama por Tubetes: {mlPorTubete}mg</Text>
-                        <Text style={stylesBoxCalc.cardText}>Máximo de mg para o peso: {maxDosePorPeso}mg</Text>
+                        <Text style={stylesBoxCalc.cardText}>Máximo de mg para o peso: {maxDosePorPeso.toFixed(1)}mg</Text>
                     </View>
                     <View style={stylesBoxCalc.cardInto}>
                         <Text style={stylesBoxCalc.cardIntoText}>*Tubete com {dadosAnestesico[2]}mg</Text>
