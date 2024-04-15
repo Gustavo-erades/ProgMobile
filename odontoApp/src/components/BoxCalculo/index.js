@@ -4,15 +4,9 @@ export default function  BoxCalculo({dadosAnestesico}){
     function chamaModal(){
         Alert.alert("Falta fazer!",'modal com todo o passo a passo do calculo feito');
     }
-    //cálculo considerando (incialmente) o Prilo 3%
-    //1 tubete ----- X ml
-    //1 ml     ----- 30 mg
-    //X ml     ----- mlPorTubete
     porcentagem=dadosAnestesico[3].replace(/[^0-9]/g, '')
-    mlPorTubete=porcentagem*10*dadosAnestesico[2] //X==dadosAnestesico[2]
-    //dose --> 6 mg/kg 300mg
+    mlPorTubete=porcentagem*10*dadosAnestesico[2]
     maxDosePorPeso=dadosAnestesico[1]*dadosAnestesico[0]
-    //1 tubete tem 1 mlPortubete (calculando o máximo de tubetes)
     quantTubete=(maxDosePorPeso/mlPorTubete).toFixed(1)
     return (
         <View style={stylesBoxCalc.container}>
