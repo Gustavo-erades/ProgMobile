@@ -1,7 +1,8 @@
-import { Text, View,TextInput, TouchableOpacity, Alert} from 'react-native';
+import { Text, View,TextInput, TouchableOpacity, Alert, Modal, Linking} from 'react-native';
 import {useState} from 'react';
 import styleBoxDetalhes from '../../style/styleBoxDetalhes';
 import { CheckBox} from 'react-native-elements';
+import {tabelaAnestesicos} from '../Tabela'
 export default function BoxDetalhes({childToParent}){
     //check box
     const [checkboxMarcado, setCheckboxMarcado]=useState(false);
@@ -12,6 +13,12 @@ export default function BoxDetalhes({childToParent}){
         }else{
             Alert.alert("Nenhum valor passado!","Preencha ao menos um campo para alterar o cálculo")
         }
+    }
+    const [tabela, setTabela]=useState(false)
+    const abrirTabela=()=>{
+        const mostraTabela=tabelaAnestesicos()
+        setTabela(mostraTabela)
+        Linking.openURL("https://google.com");
     }
     //dados dos inputs
     const [pesoInput, setPesoInput]=useState('')
@@ -47,11 +54,13 @@ export default function BoxDetalhes({childToParent}){
             <View style={styleBoxDetalhes.checkboxView}>
                 <CheckBox checked={checkboxMarcado} title="Alterar cálculo padrão" size={32} checkedColor='#5BBCAF' uncheckedColor='red' required onPress={marcarCheckbox}/>
             </View>
-            <TouchableOpacity style={styleBoxDetalhes.buttonTabelaAnestesicos} onPress={()=>{Alert.alert("Falta fazer!","tabela de anestésicos")}}>
+            <TouchableOpacity style={styleBoxDetalhes.buttonTabelaAnestesicos} onPress={abrirTabela}>
                     <Text style={styleBoxDetalhes.buttonTabelaAnestesicosText}>
                         Tabela de anestésicos
                     </Text>
             </TouchableOpacity>
+           
+           
         </View>        
     )
 }
