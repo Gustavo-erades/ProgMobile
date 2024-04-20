@@ -1,6 +1,6 @@
 import {View, Text, TouchableOpacity} from 'react-native';
 import stylesPadrao from '../../style/styleDefault';
-export default function Tela02({navigation}){
+export default function Editar({navigation}){
     return(
         <View>
             <View style={stylesPadrao.buttonArea}>

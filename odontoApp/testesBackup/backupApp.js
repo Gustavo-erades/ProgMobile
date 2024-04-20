@@ -1,6 +1,6 @@
 import { View, TouchableOpacity, Text } from 'react-native';
-import Home from './src/telas/Home/index';
-import styles from './src/style/styleDefault'
+import Home from '../src/telas/Home/index';
+import styles from '../src/style/styleDefault'
 export default function App() {
   return (
     <View>
