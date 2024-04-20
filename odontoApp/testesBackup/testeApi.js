@@ -16,7 +16,7 @@ const YourComponent = () => {
         setData(response.data);
       } catch (error) {
         // Em caso de erro, define a mensagem de erro no estado 'error'
-        setError('Ocorreu um erro ao buscar os dados da API.', error);
+        setError('Ocorreu um erro ao buscar os dados da API.');
       }
     };
 
