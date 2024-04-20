@@ -48,7 +48,7 @@ export default function Home({navigation}) {
         setChildToParent2(childData)
     }
     return (
-        <View>
+        <View style={{height:'100%',backgroundColor:'#fff'}}>
             <View style={styles.header}>
                 <Text style={styles.titulo}>Anestésicos</Text>
                 <DropdownComponent childToParent2={childToParent2} />
@@ -83,7 +83,7 @@ export default function Home({navigation}) {
                         Calcular
                     </Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={stylesPadrao.buttonInativo} onPress={()=>navigation.navigate('Tela02')}>
+                <TouchableOpacity style={stylesPadrao.buttonInativo} onPress={()=>navigation.navigate('Editar')}>
                     <Text style={stylesPadrao.botaoTextoInativo}>
                         Editar
                     </Text>

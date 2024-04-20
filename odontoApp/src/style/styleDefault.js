@@ -4,8 +4,10 @@ const styles=StyleSheet.create({
         flexDirection:'row',
         alignItems:'center',
         justifyContent:'space-around',
-        marginTop:50,
-        //backgroundColor:'#F2F2F2',
+        marginTop:10,
+        backgroundColor:'#FFF',
+        /*borderColor:'red',
+        borderWidth:1*/
     },
     button:{
         padding:10,
