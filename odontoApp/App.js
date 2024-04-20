@@ -1,24 +1,25 @@
-import { View, TouchableOpacity, Text, Alert } from 'react-native';
 import Home from './src/telas/Home/index';
 import Tela02 from './src/telas/Tela02/index';
-import styles from './src/style/styleDefault'
+import styles from './src/style/styleDefault';
+import {NavigationContainer} from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 export default function App() {
+  const Stack = createNativeStackNavigator();
   return (
-    <View>
-      <Home />
-      <View style={styles.buttonArea}>
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.botaoTexto}>
-            Calcular
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.buttonInativo} onPress={()=>{Alert.alert("Falta fazer!","vai para a tela 2")}}>
-          <Text style={styles.botaoTextoInativo}>
-            Editar
-          </Text>
-        </TouchableOpacity>
-      </View>
-    </View>
+        <NavigationContainer>
+          <Stack.Navigator>
+            <Stack.Screen 
+              name="Home"
+              component={Home}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen 
+              name="Tela02"
+              component={Tela02}
+              options={{ headerShown: false }}
+            />
+          </Stack.Navigator>
+        </NavigationContainer>
   );
 }
 

@@ -4,7 +4,8 @@ import styles from '../../style/styleHome';
 import DropdownComponent from '../../components/DropDownAnestesicos';
 import BoxCalculo from '../../components/BoxCalculo';
 import BoxDetalhes from './../../components/BoxDetalhes/index';
-export default function Home() {
+import stylesPadrao from '../../style/styleDefault';
+export default function Home({navigation}) {
     const [modalVisibleCalc, setModalVisibleCalc]=useState(false);
     const chamaTelaCalc = () => {
         if(dataChildToParent[0]!=null||dataChildToParent[1]!=null||dataChildToParent[2]!=null){
@@ -33,7 +34,6 @@ export default function Home() {
     const [dataBoxCalculo, setDataBoxCalculo]=useState('');
     const dadosAnestesico=()=>{
         const lista=dataChildToParent
-        tam=lista.length
         lista[3]=dataChildToParent2
         setDataBoxCalculo(lista)
     }
@@ -77,6 +77,18 @@ export default function Home() {
                     </Text>
                 </TouchableOpacity>
             </Modal>
+            <View style={stylesPadrao.buttonArea}>
+                <TouchableOpacity style={stylesPadrao.button} >
+                    <Text style={stylesPadrao.botaoTexto}>
+                        Calcular
+                    </Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={stylesPadrao.buttonInativo} onPress={()=>navigation.navigate('Tela02')}>
+                    <Text style={stylesPadrao.botaoTextoInativo}>
+                        Editar
+                    </Text>
+                </TouchableOpacity>
+            </View>
         </View>
     );
 }

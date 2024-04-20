@@ -66,6 +66,7 @@ const styles=StyleSheet.create(
             marginRight:'auto',
             marginLeft:'auto',
             borderRadius:10,
+            marginBottom:40
         },
         limparTelaCalcText:{
             fontSize:15,
