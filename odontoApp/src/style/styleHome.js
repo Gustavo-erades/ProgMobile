@@ -43,8 +43,9 @@ const styles=StyleSheet.create(
         contentBoxCalc:{
             backgroundColor:'#FFF',
             justifyContent:'center',
-            marginTop:20,
-            height:'50%',
+            marginTop:5,
+            height:'55%',
+            paddingTop:10
         },
         moreDetails:{
             marginLeft:'auto',
