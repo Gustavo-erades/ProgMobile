@@ -11,7 +11,7 @@ const YourComponent = () => {
     const fetchData = async () => {
       try {
         // Substitua 'sua_url_da_api' pela URL real da sua API
-        const response = await axios.get('sua_url_da_api');
+        const response = await axios.get('http://192.168.0.8/testes/backendReact/api.php');
         // Define os dados recebidos no estado 'data'
         setData(response.data);
       } catch (error) {
@@ -19,7 +19,6 @@ const YourComponent = () => {
         setError('Ocorreu um erro ao buscar os dados da API.', error);
       }
     };
-
     // Chama a função para buscar os dados da API quando o componente é montado
     fetchData();
   }, []);
@@ -30,7 +29,7 @@ const YourComponent = () => {
       {data && (
         <View>
           {/* Renderiza os dados recebidos da API */}
-          <Text>{JSON.stringify(data)}</Text>
+          <Text>{JSON.stringify(data[0].maximoAbsoluto)}</Text>
         </View>
       )}
 
