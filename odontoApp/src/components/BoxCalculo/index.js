@@ -1,5 +1,7 @@
 import { Text, View, TouchableOpacity, Alert } from 'react-native';
 import stylesBoxCalc from '../../style/styleBoxCalc';
+import {fetchBoxCalculo} from '../../services/api.js';
+import React, { useState, useEffect } from "react";
 export default function  BoxCalculo({dadosAnestesico}){
     function chamaModal(){
         Alert.alert("Falta fazer!",'modal com todo o passo a passo do calculo feito');
@@ -8,6 +10,22 @@ export default function  BoxCalculo({dadosAnestesico}){
     mlPorTubete=porcentagem*10*dadosAnestesico[2]
     maxDosePorPeso=dadosAnestesico[1]*dadosAnestesico[0]
     quantTubete=(maxDosePorPeso/mlPorTubete).toFixed(1)
+
+    //consumindo a API
+    const [anestesiaCalculo, setAnestesiaCalculo] = useState([]);
+
+    useEffect(() => {
+      async function loadAnestesiaCalculo() {
+        try {
+          const response = await fetchBoxCalculo();
+          setAnestesiaCalculo(response);
+        } catch (error) {
+          console.log('Erro ao buscar os dados na API (BoxCalculo)', error);
+        }
+      }
+      loadAnestesiaCalculo();
+    }, []);  
+    
     return (
         <View style={stylesBoxCalc.container}>
             <View style={stylesBoxCalc.card}>
@@ -16,10 +34,17 @@ export default function  BoxCalculo({dadosAnestesico}){
                 </Text>
                 <View style={stylesBoxCalc.cardContainer}>
                     <View style={stylesBoxCalc.cardTextBox}>
-                        <Text style={stylesBoxCalc.cardText}>Máximo de Tubetes: {quantTubete}</Text>
-                        <Text style={stylesBoxCalc.cardText}>Máximo de mg: {dadosAnestesico[1]}mg</Text>
-                        <Text style={stylesBoxCalc.cardText}>Miligrama por Tubetes: {mlPorTubete}mg</Text>
-                        <Text style={stylesBoxCalc.cardText}>Máximo de mg para o peso: {maxDosePorPeso.toFixed(1)}mg</Text>
+                        <Text style={stylesBoxCalc.cardText}>
+                            Máximo de Tubetes: {anestesiaCalculo['quantTubete']}
+                        </Text>
+                        <Text style={stylesBoxCalc.cardText}>
+                            Máximo de mg: API mg</Text>
+                        <Text style={stylesBoxCalc.cardText}>
+                            Miligrama por Tubetes: {anestesiaCalculo['mlPorTubete']}mg
+                        </Text>
+                        <Text style={stylesBoxCalc.cardText}>
+                            Máximo de mg para o peso: {anestesiaCalculo['maxDosePorPeso']}mg
+                            </Text>
                     </View>
                     <View style={stylesBoxCalc.cardInto}>
                         <Text style={stylesBoxCalc.cardIntoText}>*Tubete com {dadosAnestesico[2]}mg</Text>
