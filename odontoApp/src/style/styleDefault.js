@@ -6,8 +6,6 @@ const styles=StyleSheet.create({
         justifyContent:'space-around',
         marginTop:10,
         backgroundColor:'#FFF',
-        /*borderColor:'red',
-        borderWidth:1*/
     },
     button:{
         padding:10,

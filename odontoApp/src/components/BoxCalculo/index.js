@@ -3,11 +3,9 @@ import stylesBoxCalc from '../../style/styleBoxCalc';
 import {fetchBoxCalculo, fetchDadosBd} from '../../services/api.js';
 import React, { useState, useEffect } from "react";
 export default function  BoxCalculo(){
-
     function chamaModal(){
         Alert.alert("Falta fazer!",'modal com todo o passo a passo do calculo feito');
     }
-
     //consumindo a API que retorna os dados do boxCalculo
     const [anestesiaCalculo, setAnestesiaCalculo] = useState([]);
     const [anestesiaBd, setAnestesiaBd] = useState([]);

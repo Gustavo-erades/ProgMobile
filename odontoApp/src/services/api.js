@@ -1,5 +1,4 @@
 import axios from 'axios';
-
 const api = axios.create({
   baseURL: "http://192.168.0.8/testes/backendReact/api.php",
   timeout: 1000,
@@ -24,5 +23,7 @@ export const fetchDadosBd = async () => {
     throw error;
   }
 };
+//envia nome do anestésico, peso do paciente, dose máxima por quilo e volume do tubete
+
 
 export default api;
