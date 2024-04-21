@@ -1,24 +1,23 @@
 import { Text, View, TouchableOpacity, Alert } from 'react-native';
 import stylesBoxCalc from '../../style/styleBoxCalc';
-import {fetchBoxCalculo} from '../../services/api.js';
+import {fetchBoxCalculo, fetchDadosBd} from '../../services/api.js';
 import React, { useState, useEffect } from "react";
-export default function  BoxCalculo({dadosAnestesico}){
+export default function  BoxCalculo(){
+
     function chamaModal(){
         Alert.alert("Falta fazer!",'modal com todo o passo a passo do calculo feito');
     }
-    porcentagem=dadosAnestesico[3].replace(/[^0-9]/g, '')
-    mlPorTubete=porcentagem*10*dadosAnestesico[2]
-    maxDosePorPeso=dadosAnestesico[1]*dadosAnestesico[0]
-    quantTubete=(maxDosePorPeso/mlPorTubete).toFixed(1)
 
-    //consumindo a API
+    //consumindo a API que retorna os dados do boxCalculo
     const [anestesiaCalculo, setAnestesiaCalculo] = useState([]);
-
+    const [anestesiaBd, setAnestesiaBd] = useState([]);
     useEffect(() => {
       async function loadAnestesiaCalculo() {
         try {
-          const response = await fetchBoxCalculo();
-          setAnestesiaCalculo(response);
+          const responseCalculoAPI = await fetchBoxCalculo();
+          setAnestesiaCalculo(responseCalculoAPI);
+          const responseAnestesiaBd=await fetchDadosBd();
+          setAnestesiaBd(responseAnestesiaBd);
         } catch (error) {
           console.log('Erro ao buscar os dados na API (BoxCalculo)', error);
         }
@@ -30,7 +29,7 @@ export default function  BoxCalculo({dadosAnestesico}){
         <View style={stylesBoxCalc.container}>
             <View style={stylesBoxCalc.card}>
                 <Text style={stylesBoxCalc.cardTitle}> 
-                    {dadosAnestesico[3]}
+                    {anestesiaBd['anestesicoLocal']}
                 </Text>
                 <View style={stylesBoxCalc.cardContainer}>
                     <View style={stylesBoxCalc.cardTextBox}>
@@ -38,7 +37,7 @@ export default function  BoxCalculo({dadosAnestesico}){
                             Máximo de Tubetes: {anestesiaCalculo['quantTubete']}
                         </Text>
                         <Text style={stylesBoxCalc.cardText}>
-                            Máximo de mg: API mg</Text>
+                            Máximo de mg: {anestesiaBd['doseMaxima']} mg</Text>
                         <Text style={stylesBoxCalc.cardText}>
                             Miligrama por Tubetes: {anestesiaCalculo['mlPorTubete']}mg
                         </Text>
@@ -47,8 +46,8 @@ export default function  BoxCalculo({dadosAnestesico}){
                             </Text>
                     </View>
                     <View style={stylesBoxCalc.cardInto}>
-                        <Text style={stylesBoxCalc.cardIntoText}>*Tubete com {dadosAnestesico[2]}mg</Text>
-                        <Text style={stylesBoxCalc.cardIntoText}>*Paciente de {dadosAnestesico[0]}kg</Text>
+                        <Text style={stylesBoxCalc.cardIntoText}>*Tubete com {1.8}mg</Text>
+                        <Text style={stylesBoxCalc.cardIntoText}>*Paciente de {60}kg</Text>
                     </View>
                 </View>
                 <View style={stylesBoxCalc.cardButtonsFooter}>

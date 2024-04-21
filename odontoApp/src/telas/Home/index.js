@@ -13,7 +13,7 @@ export default function Home({navigation}) {
             dadosAnestesico()
         }else{
             Alert.alert("Nenhum valor passado", "informe ao menos um valor para o cálculo poder ser efetuado")
-        }
+        }  
     };
     const fechaTelaCalc = () => {
         setModalVisibleCalc(false);
@@ -42,11 +42,13 @@ export default function Home({navigation}) {
     const childToParent=(childData)=>{
         setChildToParent(childData)
     }
+
     //child to parent 2 --> referente ao elemento dropdown 
-    const [dataChildToParent2, setChildToParent2]=useState(null);
+    const [dataChildToParent2, setChildToParent2]=useState("teste");
     const childToParent2=(childData)=>{
         setChildToParent2(childData)
     }
+    
     return (
         <View style={{height:'100%',backgroundColor:'#fff'}}>
             <View style={styles.header}>
