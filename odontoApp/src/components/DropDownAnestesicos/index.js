@@ -3,7 +3,7 @@ import stylesDropDown from '../../style/styleDropDown';
 import { Dropdown } from 'react-native-element-dropdown';
 
   export default function DropdownComponent(
-    {childToParent2}
+    {childToParent}
   ){
     const data = [
       { label: 'Prilocaína 3%', value: 'Prilocaína 3%' },
@@ -15,7 +15,7 @@ import { Dropdown } from 'react-native-element-dropdown';
       { label: 'Bupivacaína 0.5%', value: 'Bupivacaína 0.5%' },
     ];
     const [value, setValue] = useState(null);
-    childToParent2(value)
+    childToParent(value)
     return (
       <Dropdown
         style={stylesDropDown.dropdown}

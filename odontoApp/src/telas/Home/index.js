@@ -8,11 +8,10 @@ import stylesPadrao from '../../style/styleDefault';
 export default function Home({navigation}) {
     const [modalVisibleCalc, setModalVisibleCalc]=useState(false);
     const chamaTelaCalc = () => {
-        if(dataChildToParent[0]!=null||dataChildToParent[1]!=null||dataChildToParent[2]!=null){
+        if(dataChildToParent!=null){
             setModalVisibleCalc(true)
-            dadosAnestesico()
         }else{
-            Alert.alert("Nenhum valor passado", "informe ao menos um valor para o cálculo poder ser efetuado")
+            Alert.alert("Anestésico não selecionado!", "informe ao menos um anestésico para o cálculo ser efetuado")
         }  
     };
     const fechaTelaCalc = () => {
@@ -30,30 +29,16 @@ export default function Home({navigation}) {
         setVisibilidadeModal(false)
         chamaTelaCalc()
     }
-    //parent to child
-    const [dataBoxCalculo, setDataBoxCalculo]=useState('');
-    const dadosAnestesico=()=>{
-        const lista=dataChildToParent
-        lista[3]=dataChildToParent2
-        setDataBoxCalculo(lista)
-    }
     //child to parent
-    const [dataChildToParent, setChildToParent]=useState('');
+    const [dataChildToParent, setChildToParent]=useState(null);
     const childToParent=(childData)=>{
         setChildToParent(childData)
     }
-
-    //child to parent 2 --> referente ao elemento dropdown 
-    const [dataChildToParent2, setChildToParent2]=useState("teste");
-    const childToParent2=(childData)=>{
-        setChildToParent2(childData)
-    }
-    
     return (
         <View style={{height:'100%',backgroundColor:'#fff'}}>
             <View style={styles.header}>
                 <Text style={styles.titulo}>Anestésicos</Text>
-                <DropdownComponent childToParent2={childToParent2} />
+                <DropdownComponent childToParent={childToParent} />
                 <TouchableOpacity style={styles.botao} onPress={chamaTelaCalc}>
                     <Text style={styles.botaoTexto}>
                         Calcular
@@ -68,11 +53,11 @@ export default function Home({navigation}) {
                 </TouchableOpacity>
             </View>
             <View style={styles.contentBoxCalc}>
-                    {modalVisibleCalc?<BoxCalculo dadosAnestesico={dataBoxCalculo}/>:<Text style={styles.textoProvisorio}>Escolha algum anestésico para efetuar o cálculo</Text>}
+                    {modalVisibleCalc?<BoxCalculo/>:<Text style={styles.textoProvisorio}>Escolha algum anestésico para efetuar o cálculo</Text>}
                     {modalVisibleCalc && <TouchableOpacity onPress={fechaTelaCalc}style={styles.limparTelaCalc}><Text style={styles.limparTelaCalcText}>Limpar</Text></TouchableOpacity>}
             </View>
             <Modal animationType='slide' transparent={false} visible={visibilidadeModal}>
-                <BoxDetalhes childToParent={childToParent}/>
+                <BoxDetalhes/>
                 <TouchableOpacity style={styles.buttonDetalhes} onPress={fecharModalDetalhes}>
                     <Text style={styles.buttonDetalhesText}>
                         Finalizar

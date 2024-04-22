@@ -23,11 +23,21 @@ export const fetchDadosBd = async () => {
     throw error;
   }
 };
-//envia nome do anestésico, peso do paciente, dose máxima por quilo e volume do tubete
-export const handleSubmit = (dataDetalhes) => {
+//envia peso do paciente, dose máxima por quilo e volume do tubete
+export const handleSubmitDetalhes = (dataDetalhes) => {
   axios.post('http://192.168.0.8/testes/backendReact/api.php', dataDetalhes)
     .then(response => {
-      console.log('Resposta da API:', response.data);
+      console.log('Resposta da API (detalhes):', response.data);
+    })
+    .catch(error => {
+      console.error('Erro ao enviar dados para a API:', error);
+    });
+};
+//envia nome do anestésico
+export const handleSubmitNome = (dataNome) => {
+  axios.post('http://192.168.0.8/testes/backendReact/api.php', dataNome)
+    .then(response => {
+      console.log('Resposta da API (dropdown):', response.data);
     })
     .catch(error => {
       console.error('Erro ao enviar dados para a API:', error);

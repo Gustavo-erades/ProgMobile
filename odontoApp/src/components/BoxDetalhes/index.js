@@ -1,32 +1,20 @@
-import { Text, View,TextInput, TouchableOpacity, Alert, Linking} from 'react-native';
+import { Text, View,TextInput, TouchableOpacity, Linking} from 'react-native';
 import {useState} from 'react';
 import styleBoxDetalhes from '../../style/styleBoxDetalhes';
 import { CheckBox} from 'react-native-elements';
-import {tabelaAnestesicos} from '../Tabela';
-import { handleSubmit } from './../../services/api';
-export default function BoxDetalhes({childToParent}){
+import { handleSubmitDetalhes } from './../../services/api';
+export default function BoxDetalhes(){
     //check box
     const [checkboxMarcado, setCheckboxMarcado]=useState(false);
     function marcarCheckbox(){
         setCheckboxMarcado(!checkboxMarcado)
-        handleSubmit(data)
-        if(dataChildToParent[0]!=''||dataChildToParent[1]!=''||dataChildToParent[2]!=''){
-            childToParent(dataChildToParent)
-        }else{
-            Alert.alert("Nenhum valor passado!","Preencha ao menos um campo para alterar o cálculo")
+        if(checkboxMarcado==false){
+            handleSubmitDetalhes(data);
         }
     }
-    const [tabela, setTabela]=useState(false)
     const abrirTabela=()=>{
-        const mostraTabela=tabelaAnestesicos()
-        setTabela(mostraTabela)
         Linking.openURL("https://google.com");
     }
-    //dados dos inputs
-    const [pesoInput, setPesoInput]=useState('')
-    const [doseInput, setDoseInput]=useState('')
-    const [tubeteInput, setTubeteInput]=useState('')
-    const dataChildToParent=['teste','teste','teste']
     //envia os dados para a API php
     const [data, setData] = useState({
         peso: '',
