@@ -30,7 +30,7 @@ import { handleSubmitNome } from '../../services/api';
         search
         maxHeight={300}
         labelField="label"
-        valueField="value"
+        valueField="label"
         placeholder="Selecionar anestésico"
         searchPlaceholder="Pesquisar anestésico"
         value={dataNome.nomeAnestesico}
