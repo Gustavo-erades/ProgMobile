@@ -4,7 +4,7 @@ import styleBoxDetalhes from '../../style/styleBoxDetalhes';
 import { CheckBox} from 'react-native-elements';
 import { handleSubmitDetalhes } from './../../services/api';
 export default function BoxDetalhes(){
-    //check box
+    //checkbox
     const [checkboxMarcado, setCheckboxMarcado]=useState(false);
     function marcarCheckbox(){
         setCheckboxMarcado(!checkboxMarcado)
@@ -20,7 +20,7 @@ export default function BoxDetalhes(){
         peso: '',
         quantMax: '',
         volTubete:'',
-      });
+    });
     
     return(
         <View>

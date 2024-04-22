@@ -1,21 +1,24 @@
 import React, { useState } from 'react';
 import stylesDropDown from '../../style/styleDropDown';
 import { Dropdown } from 'react-native-element-dropdown';
-
+import { handleSubmitNome } from '../../services/api';
   export default function DropdownComponent(
     {childToParent}
   ){
     const data = [
-      { label: 'Prilocaína 3%', value: 'Prilocaína 3%' },
-      { label: 'Mepivacaína 2%', value: 'Mepivacaína 2%' },
-      { label: 'Mepivacaína 3%', value: 'Mepivacaína 3%' },
-      { label: 'Articaína 4%', value: 'Articaína 4%' },
-      { label: 'Lidocaína 2%', value: 'Lidocaína 2%' },
-      { label: 'Lidocaína 3%', value: 'Lidocaína 3%' },
-      { label: 'Bupivacaína 0.5%', value: 'Bupivacaína 0.5%' },
+      { label: 'Prilocaína 3%' },
+      { label: 'Mepivacaína 2%'},
+      { label: 'Mepivacaína 3%'},
+      { label: 'Articaína 4%' },
+      { label: 'Lidocaína 2%'},
+      { label: 'Lidocaína 3%'},
+      { label: 'Bupivacaína 0.5%'},
     ];
-    const [value, setValue] = useState(null);
-    childToParent(value)
+    childToParent(dataNome)
+    //envia os dados para a API php
+    const [dataNome, setData] = useState({
+      nomeAnestesico: '',
+    });
     return (
       <Dropdown
         style={stylesDropDown.dropdown}
@@ -30,10 +33,13 @@ import { Dropdown } from 'react-native-element-dropdown';
         valueField="value"
         placeholder="Selecionar anestésico"
         searchPlaceholder="Pesquisar anestésico"
-        value={value}
+        value={dataNome.nomeAnestesico}
         onChange={item => {
-          setValue(item.value);
+          setData({ ...dataNome, nomeAnestesico: item });
         }}
+        onConfirmSelectItem={
+          handleSubmitNome(dataNome)
+        }
       />
     );
   };

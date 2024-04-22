@@ -8,7 +8,7 @@ import stylesPadrao from '../../style/styleDefault';
 export default function Home({navigation}) {
     const [modalVisibleCalc, setModalVisibleCalc]=useState(false);
     const chamaTelaCalc = () => {
-        if(dataChildToParent!=null){
+        if(dataChildToParent!=''){
             setModalVisibleCalc(true)
         }else{
             Alert.alert("Anestésico não selecionado!", "informe ao menos um anestésico para o cálculo ser efetuado")
@@ -16,11 +16,7 @@ export default function Home({navigation}) {
     };
     const fechaTelaCalc = () => {
         setModalVisibleCalc(false);
-        const max=dataChildToParent.length-1
-        for(let x=0; x<=max; x++){
-            dataChildToParent[x]=null
         }
-    }
     const [visibilidadeModal, setVisibilidadeModal]=useState(null);
     const abrirModalDetalhes=()=>{
         setVisibilidadeModal(true)
