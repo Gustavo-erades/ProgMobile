@@ -8,8 +8,8 @@ const AppTeste = () => {
     email: '',
   });
 
-  const handleSubmit = () => {
-    axios.post('http://192.168.0.8/testes/backendReact/serase.php', data)
+  const handleSubmit = (dataT) => {
+    axios.post('http://192.168.0.8/testes/backendReact/serase.php', dataT)
       .then(response => {
         console.log('Resposta da API:', response.data);
         // Faça algo com a resposta, se necessário
@@ -31,7 +31,7 @@ const AppTeste = () => {
         onChangeText={text => setData({ ...data, email: text })}
         value={data.email}
       />
-      <Button title="Enviar" onPress={handleSubmit} />
+      <Button title="Enviar" onPress={handleSubmit(data)} />
     </View>
   );
 };

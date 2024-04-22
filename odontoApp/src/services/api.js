@@ -24,6 +24,14 @@ export const fetchDadosBd = async () => {
   }
 };
 //envia nome do anestésico, peso do paciente, dose máxima por quilo e volume do tubete
-
+export const handleSubmit = (data) => {
+  axios.post('http://192.168.0.8/testes/backendReact/api.php', data)
+    .then(response => {
+      console.log('Resposta da API:', response.data);
+    })
+    .catch(error => {
+      console.error('Erro ao enviar dados para a API:', error);
+    });
+};
 
 export default api;
