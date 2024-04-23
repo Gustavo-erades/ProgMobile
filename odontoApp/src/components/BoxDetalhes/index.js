@@ -13,7 +13,7 @@ export default function BoxDetalhes(){
         }
     }
     const abrirTabela=()=>{
-        Linking.openURL("https://google.com");
+        Linking.openURL("http://192.168.0.8/testes/backendReact/tabela");
     }
     //envia os dados para a API php
     const [data, setData] = useState({
