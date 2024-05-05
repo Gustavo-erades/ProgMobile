@@ -23,6 +23,16 @@ export const fetchDadosBd = async () => {
     throw error;
   }
 };
+//Recebe nome do anestésico que será usado para o cálculo
+export const fetchNomeAnestesico=async()=>{
+  try{
+    const response= await api.get("?action=nomeAnestesicoDropdown");
+    return response.data;
+  }catch(error){
+    console.error("Erro ao buscar nome do anestésico: tela api",error);
+    throw error;
+  }
+}
 //envia peso do paciente, dose máxima por quilo e volume do tubete
 export const handleSubmitDetalhes = (dataDetalhes) => {
   axios.post('http://192.168.0.8/testes/backendReact/api.php', dataDetalhes)

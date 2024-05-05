@@ -8,15 +8,11 @@ import stylesPadrao from '../../style/styleDefault';
 export default function Home({navigation}) {
     const [modalVisibleCalc, setModalVisibleCalc]=useState(false);
     const chamaTelaCalc = () => {
-        if(dataChildToParent!=''){
-            setModalVisibleCalc(true)
-        }else{
-            Alert.alert("Anestésico não selecionado!", "informe ao menos um anestésico para o cálculo ser efetuado")
-        }  
+        setModalVisibleCalc(true)
     };
     const fechaTelaCalc = () => {
         setModalVisibleCalc(false);
-        }
+    }
     const [visibilidadeModal, setVisibilidadeModal]=useState(null);
     const abrirModalDetalhes=()=>{
         setVisibilidadeModal(true)
@@ -26,15 +22,12 @@ export default function Home({navigation}) {
         chamaTelaCalc()
     }
     //child to parent
-    const [dataChildToParent, setChildToParent]=useState(null);
-    const childToParent=(childData)=>{
-        setChildToParent(childData)
-    }
+    
     return (
         <View style={{height:'100%',backgroundColor:'#fff'}}>
             <View style={styles.header}>
                 <Text style={styles.titulo}>Anestésicos</Text>
-                <DropdownComponent childToParent={childToParent} />
+                <DropdownComponent />
                 <TouchableOpacity style={styles.botao} onPress={chamaTelaCalc}>
                     <Text style={styles.botaoTexto}>
                         Calcular
