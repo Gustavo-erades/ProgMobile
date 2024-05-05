@@ -3,7 +3,7 @@ import stylesDropDown from '../../style/styleDropDown';
 import { Dropdown } from 'react-native-element-dropdown';
 import { handleSubmitNome } from '../../services/api';
   export default function DropdownComponent(
-    
+    {dataChildToParent}
   ){
     const data = [
       { label: 'Prilocaína 3%' },
@@ -18,6 +18,9 @@ import { handleSubmitNome } from '../../services/api';
     const [dataNome, setData] = useState({
       nomeAnestesico: '',
     });
+    if(dataNome.nomeAnestesico!=''){
+      dataChildToParent(dataNome.nomeAnestesico);
+    }
     return (
       <Dropdown
         style={stylesDropDown.dropdown}

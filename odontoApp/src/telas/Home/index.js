@@ -5,10 +5,16 @@ import DropdownComponent from '../../components/DropDownAnestesicos';
 import BoxCalculo from '../../components/BoxCalculo';
 import BoxDetalhes from './../../components/BoxDetalhes/index';
 import stylesPadrao from '../../style/styleDefault';
+import {fetchNomeAnestesico} from '../../services/api.js'
 export default function Home({navigation}) {
     const [modalVisibleCalc, setModalVisibleCalc]=useState(false);
     const chamaTelaCalc = () => {
-        setModalVisibleCalc(true)
+        console.log(nome)
+        if(nome!=''){
+            setModalVisibleCalc(true)
+        }else{
+            Alert.alert("Anestésico não selecionado","Por favor, selecione algum anestésico na barra acima para o cálculo porder ser efetuado")
+        }
     };
     const fechaTelaCalc = () => {
         setModalVisibleCalc(false);
@@ -22,12 +28,15 @@ export default function Home({navigation}) {
         chamaTelaCalc()
     }
     //child to parent
-    
+    const [nome,setNome]=useState('');
+    const trocaNomeAnestesico=(value)=>{
+        setNome(value);
+    }
     return (
         <View style={{height:'100%',backgroundColor:'#fff'}}>
             <View style={styles.header}>
                 <Text style={styles.titulo}>Anestésicos</Text>
-                <DropdownComponent />
+                <DropdownComponent dataChildToParent={trocaNomeAnestesico}/>
                 <TouchableOpacity style={styles.botao} onPress={chamaTelaCalc}>
                     <Text style={styles.botaoTexto}>
                         Calcular
