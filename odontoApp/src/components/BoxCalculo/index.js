@@ -88,10 +88,10 @@ export default function  BoxCalculo(){
                                         {numMgSal}mg X {anestesiaCalculo['volTubetePaciente']}mL (volume contido em 1 tubete) = {mgPorTubete}mg
                                     </Text>
                                     <Text style={stylesBoxCalc.cardText}>
-                                        A dose máxima de {anestesiaBd['anestesicoLocal']} por peso corporal é de {anestesiaBd['doseMaxima']}, portanto:
+                                        A dose máxima de {anestesiaBd['anestesicoLocal']} por peso corporal é de {anestesiaCalculo['maxPorKg']?anestesiaCalculo['maxPorKg']:anestesiaBd['doseMaxima']}:
                                     </Text>
                                     <Text style={stylesBoxCalc.cardText}>
-                                        {anestesiaCalculo['pesoPaciente']}kg X {anestesiaBd['doseMaxima']}mg/kg = {doseMaxSal}mg
+                                        {anestesiaCalculo['pesoPaciente']}kg X {anestesiaCalculo['maxPorKg']?anestesiaCalculo['maxPorKg']:anestesiaBd['doseMaxima']}mg/kg = {doseMaxSal}mg
                                     </Text>
                                     <Text style={stylesBoxCalc.cardText}>
                                         {doseMaxSal}mg / {mgPorTubete}mg = {(doseMaxSal/mgPorTubete).toFixed(1)} tubetes

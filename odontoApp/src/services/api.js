@@ -53,5 +53,15 @@ export const handleSubmitNome = (dataNome) => {
       console.error('Erro ao enviar dados para a API:', error);
     });
 };
+//envia dados do novo anestésico (cadastro de anestésico)
+export const handleSubmitNovoAnestesico = (dataNovoAnestésico) => {
+  axios.post('http://192.168.0.8/testes/backendReact/api.php', dataNovoAnestésico)
+    .then(response => {
+      console.log('Resposta da API (Editar):', response.data);
+    })
+    .catch(error => {
+      console.error('Erro ao enviar dados para a API:', error);
+    });
+};
 
 export default api;

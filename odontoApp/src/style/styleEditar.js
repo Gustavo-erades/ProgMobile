@@ -12,13 +12,40 @@ const stylesEditar = StyleSheet.create({
         fontWeight:'bold',
         textTransform:'uppercase',
         color:'#fff'//'#6AD9CE',
-
     },
     boxConteudo:{
         height:"75%",
         textAlign:"center",
         justifyContent:"center",
-
-    }
+    },
+    titleInput:{
+        fontSize:18,
+        fontWeight:'bold',
+        paddingLeft:10,
+        marginTop:15,
+        marginBottom:8,
+    },
+    input:{
+        marginLeft:10,
+        marginRight:10,
+        marginTop:0,
+        fontSize:18,
+        fontWeight:'bold',
+        borderWidth:1,
+        borderColor:'#F2F2F2',
+        height:50,
+        borderRadius:20,
+        textAlign:'center',
+    },
+    buttonCadastrar:{
+        backgroundColor:'#74EFDE',
+        border:'none',
+        padding:15,
+        width:'80%',
+        marginLeft:'auto',
+        marginRight:'auto',
+        borderRadius:15,
+        marginTop:20,
+    },
   });
 export default stylesEditar;
