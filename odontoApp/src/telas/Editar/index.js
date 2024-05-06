@@ -107,7 +107,7 @@ export default function Editar({navigation}){
                             Cadastrar
                         </Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={stylesEditar.buttonCadastrar} onPress={chamaTelaRemover}>
+                    <TouchableOpacity style={stylesEditar.buttonRemover} onPress={chamaTelaRemover}>
                         <Text style={styles.buttonDetalhesText}>
                             Remover
                         </Text>
