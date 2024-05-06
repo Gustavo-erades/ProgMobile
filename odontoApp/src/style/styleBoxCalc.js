@@ -59,6 +59,9 @@ const styleBoxCalc=StyleSheet.create(
             flexDirection:'row',
             alignItems:'center',
             justifyContent:'space-around',
+        },
+        teste:{
+            fontWeight:'bold'
         }
     }
 )
