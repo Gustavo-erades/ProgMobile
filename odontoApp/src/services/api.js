@@ -63,5 +63,14 @@ export const handleSubmitNovoAnestesico = (dataNovoAnestésico) => {
       console.error('Erro ao enviar dados para a API:', error);
     });
 };
-
+//envia nome do anestésico a ser deletado (remover anestésico)
+export const handleSubmitDeletarAnestesico = (nomeRemoverAnestesico) => {
+  axios.post('http://192.168.0.8/testes/backendReact/api.php', nomeRemoverAnestesico)
+    .then(response => {
+      console.log('Resposta da API (Remover):', response.data);
+    })
+    .catch(error => {
+      console.error('Erro ao enviar dados para a API:', error);
+    });
+};
 export default api;

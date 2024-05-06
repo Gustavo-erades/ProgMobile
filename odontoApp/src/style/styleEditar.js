@@ -47,5 +47,17 @@ const stylesEditar = StyleSheet.create({
         borderRadius:15,
         marginTop:20,
     },
+    buttonTabelaAnestesicos:{
+        marginTop:20,
+        marginBottom:0,
+        borderColor:'#BFBFBF',
+        borderWidth:0.8,
+        padding:18,
+        marginLeft:'auto',
+        marginRight:'auto',
+        width:'95%',
+        borderRadius:3,
+        backgroundColor:'#F2F2F2',
+    },
   });
 export default stylesEditar;

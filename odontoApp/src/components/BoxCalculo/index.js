@@ -76,37 +76,39 @@ export default function  BoxCalculo(){
                         setVisibilidadeModal(!visibilidadeModal)
                     }}
                 >
-                    <View style={{backgroundColor:'rgba(0,0,0,0.4);',height:'100%', justifyContent:'center'}}>
-                        <View style={stylesBoxCalc.card}>
-                            <Text style={stylesBoxCalc.cardTitle}>Solução de {anestesiaBd['anestesicoLocal']}</Text>
-                            <View style={stylesBoxCalc.cardContainer}>
-                                <View style={stylesBoxCalc.cardInto}>
-                                    <Text style={stylesBoxCalc.cardText}>
-                                        Contém {numSal}g do sal em 100ml de solução = {numMgSal}mg/mL
-                                    </Text>
-                                    <Text style={stylesBoxCalc.cardText}>
-                                        {numMgSal}mg X {anestesiaCalculo['volTubetePaciente']}mL (volume contido em 1 tubete) = {mgPorTubete}mg
-                                    </Text>
-                                    <Text style={stylesBoxCalc.cardText}>
-                                        A dose máxima de {anestesiaBd['anestesicoLocal']} por peso corporal é de {anestesiaCalculo['maxPorKg']?anestesiaCalculo['maxPorKg']:anestesiaBd['doseMaxima']}:
-                                    </Text>
-                                    <Text style={stylesBoxCalc.cardText}>
-                                        {anestesiaCalculo['pesoPaciente']}kg X {anestesiaCalculo['maxPorKg']?anestesiaCalculo['maxPorKg']:anestesiaBd['doseMaxima']}mg/kg = {doseMaxSal}mg
-                                    </Text>
-                                    <Text style={stylesBoxCalc.cardText}>
-                                        {doseMaxSal}mg / {mgPorTubete}mg = {(doseMaxSal/mgPorTubete).toFixed(1)} tubetes
-                                    </Text>
+                    <TouchableOpacity onPress={chamaModal}>
+                        <View style={{backgroundColor:'rgba(0,0,0,0.4);',height:'100%', justifyContent:'center'}}>
+                            <View style={stylesBoxCalc.card}>
+                                <Text style={stylesBoxCalc.cardTitle}>Solução de {anestesiaBd['anestesicoLocal']}</Text>
+                                <View style={stylesBoxCalc.cardContainer}>
+                                    <View style={stylesBoxCalc.cardInto}>
+                                        <Text style={stylesBoxCalc.cardText}>
+                                            Contém {numSal}g do sal em 100ml de solução = {numMgSal}mg/mL
+                                        </Text>
+                                        <Text style={stylesBoxCalc.cardText}>
+                                            {numMgSal}mg X {anestesiaCalculo['volTubetePaciente']}mL (volume contido em 1 tubete) = {mgPorTubete}mg
+                                        </Text>
+                                        <Text style={stylesBoxCalc.cardText}>
+                                            A dose máxima de {anestesiaBd['anestesicoLocal']} por peso corporal é de {anestesiaCalculo['maxPorKg']?anestesiaCalculo['maxPorKg']:anestesiaBd['doseMaxima']}:
+                                        </Text>
+                                        <Text style={stylesBoxCalc.cardText}>
+                                            {anestesiaCalculo['pesoPaciente']}kg X {anestesiaCalculo['maxPorKg']?anestesiaCalculo['maxPorKg']:anestesiaBd['doseMaxima']}mg/kg = {doseMaxSal}mg
+                                        </Text>
+                                        <Text style={stylesBoxCalc.cardText}>
+                                            {doseMaxSal}mg / {mgPorTubete}mg = {(doseMaxSal/mgPorTubete).toFixed(1)} tubetes
+                                        </Text>
+                                    </View>
+                                </View>
+                                <View style={stylesBoxCalc.cardButtonsFooter}>
+                                    <TouchableOpacity onPress={chamaModal} style={stylesBoxCalc.cardButton}>
+                                        <Text style={stylesModalCalc.cardIntoText}>
+                                            Fechar
+                                        </Text>
+                                    </TouchableOpacity>
                                 </View>
                             </View>
-                            <View style={stylesBoxCalc.cardButtonsFooter}>
-                                <TouchableOpacity onPress={chamaModal} style={stylesBoxCalc.cardButton}>
-                                    <Text style={stylesModalCalc.cardIntoText}>
-                                        Fechar
-                                    </Text>
-                                </TouchableOpacity>
-                            </View>
                         </View>
-                    </View>
+                    </TouchableOpacity>
                 </Modal>
             </View>
         </View>
