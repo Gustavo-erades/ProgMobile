@@ -1,11 +1,8 @@
-import { Text, View, TouchableOpacity, Alert } from 'react-native';
+import { Text, View, TouchableOpacity, Alert, Modal } from 'react-native';
 import stylesBoxCalc from '../../style/styleBoxCalc';
 import {fetchBoxCalculo, fetchDadosBd} from '../../services/api.js';
 import React, { useState, useEffect } from "react";
 export default function  BoxCalculo(){
-    function chamaModal(){
-        Alert.alert("Falta fazer!",'modal com todo o passo a passo do calculo feito');
-    }
     //consumindo a API que retorna os dados do boxCalculo
     const [anestesiaCalculo, setAnestesiaCalculo] = useState([]);
     const [anestesiaBd, setAnestesiaBd] = useState([]);
@@ -22,7 +19,15 @@ export default function  BoxCalculo(){
       }
       loadAnestesiaCalculo();
     }, []);  
-    
+    //modal com os detalhes do cálculo de anestesia
+    const [visibilidadeModal, setVisibilidadeModal]=useState(false);
+    function chamaModal(){
+        setVisibilidadeModal(!visibilidadeModal);
+    }
+    const numSal=parseFloat(anestesiaBd['porcentagem'])
+    const numMgSal=(numSal*1000)/100;
+    const doseMaxSal=(parseFloat(anestesiaCalculo['pesoPaciente'])*parseFloat(anestesiaBd['doseMaxima'])).toFixed(1);
+    const mgPorTubete=(numMgSal*parseFloat(anestesiaCalculo['volTubetePaciente'])).toFixed(1)
     return (
         <View style={stylesBoxCalc.container}>
             <View style={stylesBoxCalc.card}>
@@ -44,8 +49,8 @@ export default function  BoxCalculo(){
                             </Text>
                     </View>
                     <View style={stylesBoxCalc.cardInto}>
-                        <Text style={stylesBoxCalc.cardIntoText}>*Tubete com {1.8}mg</Text>
-                        <Text style={stylesBoxCalc.cardIntoText}>*Paciente de {60}kg</Text>
+                        <Text style={stylesBoxCalc.cardIntoText}>*Tubete com {anestesiaCalculo['volTubetePaciente']}mg</Text>
+                        <Text style={stylesBoxCalc.cardIntoText}>*Paciente de {anestesiaCalculo['pesoPaciente']}kg</Text>
                     </View>
                 </View>
                 <View style={stylesBoxCalc.cardButtonsFooter}>
@@ -62,6 +67,41 @@ export default function  BoxCalculo(){
                         </Text>
                     </TouchableOpacity>
                 </View>
+                <Modal
+                    animationType='none'
+                    transparent={false}
+                    visible={visibilidadeModal}
+                    onRequestClose={()=>{
+                        setVisibilidadeModal(!visibilidadeModal)
+                    }}
+                >
+                    <View>
+                        <Text>Detalhes do cálculo</Text>
+                        <Text>Solução de {anestesiaBd['anestesicoLocal']}</Text>
+                    </View>
+                    <View>
+                        <Text>
+                            Contém {numSal}g do sal em 100ml de solução = {numMgSal}mg/mL
+                        </Text>
+                        <Text>
+                            {numMgSal}mg X {anestesiaCalculo['volTubetePaciente']}mL (volume contido em 1 tubete) = {mgPorTubete}mg
+                        </Text>
+                        <Text>
+                            A dose máxima de {anestesiaBd['anestesicoLocal']} por peso corporal é de {anestesiaBd['doseMaxima']}, portanto:
+                        </Text>
+                        <Text>
+                            {anestesiaCalculo['pesoPaciente']}kg X {anestesiaBd['doseMaxima']}mg/kg = {doseMaxSal}mg
+                        </Text>
+                        <Text>
+                            {doseMaxSal}mg / {mgPorTubete}mg = {(doseMaxSal/mgPorTubete).toFixed(1)} tubetes
+                        </Text>
+                    </View>
+                    <TouchableOpacity onPress={chamaModal}>
+                        <Text>
+                            Fechar
+                        </Text>
+                    </TouchableOpacity>
+                </Modal>
             </View>
         </View>
     );
