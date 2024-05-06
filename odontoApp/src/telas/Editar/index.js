@@ -1,4 +1,4 @@
-import {View, Text, TouchableOpacity} from 'react-native';
+import {View, Text, TouchableOpacity, TextInput} from 'react-native';
 import stylesPadrao from '../../style/styleDefault';
 import stylesEditar from '../../style/styleEditar';
 export default function Editar({navigation}){
@@ -11,8 +11,9 @@ export default function Editar({navigation}){
             </View>
             <View style={stylesEditar.boxConteudo}>
                 <Text>
-                    conteudo inputs
+                    Peso do paciente:
                 </Text>
+                <TextInput placeholder="60Kg" keyboardType='numeric' />
             </View>
             <View style={stylesPadrao.buttonArea}>
                 <TouchableOpacity style={stylesPadrao.buttonInativo} onPress={()=>navigation.navigate('Home')}>
