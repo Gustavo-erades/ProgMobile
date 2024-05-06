@@ -20,6 +20,27 @@ export default function  BoxCalculo(){
       }
       loadAnestesiaCalculo();
     }, []);  
+    //fução assincrona para ser usada ao recarregar a página
+    const [executarFuncao, setExecutarFuncao] = useState(false);
+    useEffect(() => {
+        const loadAnestesiaCalculo2=async ()=>{
+          try {
+            const responseCalculoAPI = await fetchBoxCalculo();
+            setAnestesiaCalculo(responseCalculoAPI);
+            const responseAnestesiaBd=await fetchDadosBd();
+            setAnestesiaBd(responseAnestesiaBd);
+          } catch (error) {
+            console.log('Erro ao buscar os dados na API (BoxCalculo)', error);
+          }
+        }
+        if (executarFuncao) {
+            loadAnestesiaCalculo2();
+            setExecutarFuncao(false);
+          }
+      }, [executarFuncao]);
+      const recarregar=()=>{
+        setExecutarFuncao(true);
+      }
     //modal com os detalhes do cálculo de anestesia
     const [visibilidadeModal, setVisibilidadeModal]=useState(false);
     function chamaModal(){
@@ -55,9 +76,7 @@ export default function  BoxCalculo(){
                     </View>
                 </View>
                 <View style={stylesBoxCalc.cardButtonsFooter}>
-                    <TouchableOpacity style={stylesBoxCalc.cardButton} onPress={()=>{
-                        Alert.alert("Falta fazer!","faz um SELECT e retorna os dados atualizados das tabelas") 
-                    }}>
+                    <TouchableOpacity style={stylesBoxCalc.cardButton} onPress={recarregar}>
                         <Text style={stylesModalCalc.cardButtonText}>
                             Recarregar
                         </Text>
