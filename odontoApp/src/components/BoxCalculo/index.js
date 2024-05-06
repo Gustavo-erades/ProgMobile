@@ -1,5 +1,6 @@
 import { Text, View, TouchableOpacity, Alert, Modal } from 'react-native';
 import stylesBoxCalc from '../../style/styleBoxCalc';
+import stylesModalCalc from '../../style/stylesModalCalc.js';
 import {fetchBoxCalculo, fetchDadosBd} from '../../services/api.js';
 import React, { useState, useEffect } from "react";
 export default function  BoxCalculo(){
@@ -26,7 +27,7 @@ export default function  BoxCalculo(){
     }
     const numSal=parseFloat(anestesiaBd['porcentagem'])
     const numMgSal=(numSal*1000)/100;
-    const doseMaxSal=(parseFloat(anestesiaCalculo['pesoPaciente'])*parseFloat(anestesiaBd['doseMaxima'])).toFixed(1);
+    const doseMaxSal=(parseFloat(anestesiaCalculo['pesoPaciente'])*parseFloat(anestesiaCalculo['maxPorKg']?anestesiaCalculo['maxPorKg']:anestesiaBd['doseMaxima'])).toFixed(1);
     const mgPorTubete=(numMgSal*parseFloat(anestesiaCalculo['volTubetePaciente'])).toFixed(1)
     return (
         <View style={stylesBoxCalc.container}>
@@ -40,7 +41,7 @@ export default function  BoxCalculo(){
                             Máximo de Tubetes: {anestesiaCalculo['quantTubete']}
                         </Text>
                         <Text style={stylesBoxCalc.cardText}>
-                            Máximo de mg: {anestesiaBd['doseMaxima']} mg</Text>
+                            Máximo de mg: {anestesiaCalculo['maxPorKg']?anestesiaCalculo['maxPorKg']:anestesiaBd['doseMaxima']} mg</Text>
                         <Text style={stylesBoxCalc.cardText}>
                             Miligrama por Tubetes: {anestesiaCalculo['mlPorTubete']}mg
                         </Text>
@@ -74,29 +75,30 @@ export default function  BoxCalculo(){
                     onRequestClose={()=>{
                         setVisibilidadeModal(!visibilidadeModal)
                     }}
+                    style={stylesModalCalc.modal}
                 >
-                    <View>
-                        <Text>Detalhes do cálculo</Text>
-                        <Text>Solução de {anestesiaBd['anestesicoLocal']}</Text>
+                    <View styles={stylesModalCalc.boxTitulo}>
+                        <Text styles={stylesModalCalc.textoTitulo}>Detalhes do cálculo</Text>
+                        <Text styles={stylesModalCalc.textoTitulo}>Solução de {anestesiaBd['anestesicoLocal']}</Text>
                     </View>
-                    <View>
-                        <Text>
+                    <View style={stylesModalCalc.boxTexto}>
+                        <Text style={stylesModalCalc.texto}>
                             Contém {numSal}g do sal em 100ml de solução = {numMgSal}mg/mL
                         </Text>
-                        <Text>
+                        <Text style={stylesModalCalc.texto}>
                             {numMgSal}mg X {anestesiaCalculo['volTubetePaciente']}mL (volume contido em 1 tubete) = {mgPorTubete}mg
                         </Text>
-                        <Text>
+                        <Text style={stylesModalCalc.texto}>
                             A dose máxima de {anestesiaBd['anestesicoLocal']} por peso corporal é de {anestesiaBd['doseMaxima']}, portanto:
                         </Text>
-                        <Text>
+                        <Text style={stylesModalCalc.texto}>
                             {anestesiaCalculo['pesoPaciente']}kg X {anestesiaBd['doseMaxima']}mg/kg = {doseMaxSal}mg
                         </Text>
-                        <Text>
+                        <Text style={stylesModalCalc.texto}>
                             {doseMaxSal}mg / {mgPorTubete}mg = {(doseMaxSal/mgPorTubete).toFixed(1)} tubetes
                         </Text>
                     </View>
-                    <TouchableOpacity onPress={chamaModal}>
+                    <TouchableOpacity onPress={chamaModal} style={stylesBoxCalc.botao}>
                         <Text>
                             Fechar
                         </Text>
