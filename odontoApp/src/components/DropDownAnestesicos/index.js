@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import stylesDropDown from '../../style/styleDropDown';
 import { Dropdown } from 'react-native-element-dropdown';
-import { handleSubmitNome } from '../../services/api';
+import { handleSubmitNome} from '../../services/api';
   export default function DropdownComponent(
     {dataChildToParent}
   ){
