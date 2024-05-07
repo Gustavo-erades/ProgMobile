@@ -100,7 +100,7 @@ export default function  BoxCalculo(){
                             <View style={stylesBoxCalc.card}>
                                 <Text style={stylesBoxCalc.cardTitle}>Solução de {anestesiaBd['anestesicoLocal']}</Text>
                                 <View style={stylesBoxCalc.cardContainer}>
-                                    <View style={stylesBoxCalc.cardInto}>
+                                    <View style={stylesModalCalc.cardInto}>
                                         <Text style={stylesBoxCalc.cardText}>
                                             Contém {numSal}g do sal em 100ml de solução = {numMgSal} mg/mL
                                         </Text>

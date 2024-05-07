@@ -56,7 +56,7 @@ const stylesEditar = StyleSheet.create({
         marginRight:'auto',
         borderRadius:15,
         marginTop:20,
-        marginBottom:40,
+        marginBottom:20,
     },
     buttonTabelaAnestesicos:{
         marginTop:20,

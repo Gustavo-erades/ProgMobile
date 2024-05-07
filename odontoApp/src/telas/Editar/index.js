@@ -112,6 +112,11 @@ export default function Editar({navigation}){
                             Remover
                         </Text>
                     </TouchableOpacity>
+                    <TouchableOpacity style={stylesEditar.buttonTabelaAnestesicos} onPress={abrirTabela}>
+                        <Text style={styleBoxDetalhes.buttonTabelaAnestesicosText}>
+                            Tabela de anestésicos
+                        </Text>
+                    </TouchableOpacity>
                     <Modal 
                         animationType='none'
                         transparent={true}

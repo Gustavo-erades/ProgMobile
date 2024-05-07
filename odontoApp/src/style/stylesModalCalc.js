@@ -41,7 +41,17 @@ const stylesModalCalc=StyleSheet.create(
         cardButtonText:{
             fontWeight:'bold',
             textTransform:'capitalize',
-        }
+        },
+        cardInto:{
+            backgroundColor:'#04BFAD',
+            padding:10,
+            borderRadius:8,
+            marginTop:10,
+            marginBottom:10,
+            width:'100%',
+            marginRight:'auto',
+            marginLeft:'auto',
+        },
     }
 )
 export default stylesModalCalc;
