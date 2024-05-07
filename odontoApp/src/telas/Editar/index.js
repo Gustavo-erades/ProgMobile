@@ -45,9 +45,10 @@ export default function Editar({navigation}){
     const [visibilidadeRemover,setVisibilidadeRemover]=useState(false);
     function chamaTelaRemover(){
         setVisibilidadeRemover(!visibilidadeRemover);
+        setDataRemover({...dataRemover,nomeRemover:''});
     }
     function removerAnestesico(){
-        if(dataRemover['nomeRemover']!=''){
+       if(dataRemover['nomeRemover']!=''){
             try{
                 handleSubmitDeletarAnestesico(dataRemover);
                 Alert.alert('Anestésico removido com sucesso!','O anestésico descrito foi removido do banco de dados.');
