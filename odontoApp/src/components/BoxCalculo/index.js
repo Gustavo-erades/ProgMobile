@@ -64,15 +64,15 @@ export default function  BoxCalculo(){
                         <Text style={stylesBoxCalc.cardText}>
                             Máximo de mg: {anestesiaCalculo['maxPorKg']?anestesiaCalculo['maxPorKg']:anestesiaBd['doseMaxima']} mg</Text>
                         <Text style={stylesBoxCalc.cardText}>
-                            Miligrama por Tubetes: {anestesiaCalculo['mlPorTubete']}mg
+                            Miligrama por Tubetes: {anestesiaCalculo['mlPorTubete']} mg
                         </Text>
                         <Text style={stylesBoxCalc.cardText}>
-                            Máximo de mg para o peso: {anestesiaCalculo['maxDosePorPeso']}mg
+                            Máximo de mg para o peso: {anestesiaCalculo['maxDosePorPeso']} mg
                             </Text>
                     </View>
                     <View style={stylesBoxCalc.cardInto}>
-                        <Text style={stylesBoxCalc.cardIntoText}>*Tubete com {anestesiaCalculo['volTubetePaciente']}mg</Text>
-                        <Text style={stylesBoxCalc.cardIntoText}>*Paciente de {anestesiaCalculo['pesoPaciente']}kg</Text>
+                        <Text style={stylesBoxCalc.cardIntoText}>*Tubete com {anestesiaCalculo['volTubetePaciente']} mg</Text>
+                        <Text style={stylesBoxCalc.cardIntoText}>*Paciente de {anestesiaCalculo['pesoPaciente']} kg</Text>
                     </View>
                 </View>
                 <View style={stylesBoxCalc.cardButtonsFooter}>
@@ -102,19 +102,19 @@ export default function  BoxCalculo(){
                                 <View style={stylesBoxCalc.cardContainer}>
                                     <View style={stylesBoxCalc.cardInto}>
                                         <Text style={stylesBoxCalc.cardText}>
-                                            Contém {numSal}g do sal em 100ml de solução = {numMgSal}mg/mL
+                                            Contém {numSal}g do sal em 100ml de solução = {numMgSal} mg/mL
                                         </Text>
                                         <Text style={stylesBoxCalc.cardText}>
-                                            {numMgSal}mg X {anestesiaCalculo['volTubetePaciente']}mL (volume contido em 1 tubete) = {mgPorTubete}mg
+                                            {numMgSal}mg X {anestesiaCalculo['volTubetePaciente']} mL (volume contido em 1 tubete) = {mgPorTubete} mg
                                         </Text>
                                         <Text style={stylesBoxCalc.cardText}>
                                             A dose máxima de {anestesiaBd['anestesicoLocal']} por peso corporal é de {anestesiaCalculo['maxPorKg']?anestesiaCalculo['maxPorKg']:anestesiaBd['doseMaxima']}:
                                         </Text>
                                         <Text style={stylesBoxCalc.cardText}>
-                                            {anestesiaCalculo['pesoPaciente']}kg X {anestesiaCalculo['maxPorKg']?anestesiaCalculo['maxPorKg']:anestesiaBd['doseMaxima']}mg/kg = {doseMaxSal}mg
+                                            {anestesiaCalculo['pesoPaciente']}kg X {anestesiaCalculo['maxPorKg']?anestesiaCalculo['maxPorKg']:anestesiaBd['doseMaxima']} mg/kg = {doseMaxSal} mg
                                         </Text>
                                         <Text style={stylesBoxCalc.cardText}>
-                                            {doseMaxSal}mg / {mgPorTubete}mg = {(doseMaxSal/mgPorTubete).toFixed(1)} tubetes
+                                            {doseMaxSal} mg / {mgPorTubete} mg = {(doseMaxSal/mgPorTubete).toFixed(1)} tubetes
                                         </Text>
                                     </View>
                                 </View>
