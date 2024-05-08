@@ -29,6 +29,7 @@ const stylesEditar = StyleSheet.create({
         marginLeft:10,
         marginRight:10,
         marginTop:0,
+        marginBottom:20,
         fontSize:18,
         fontWeight:'bold',
         borderWidth:1,
@@ -45,7 +46,7 @@ const stylesEditar = StyleSheet.create({
         marginLeft:'auto',
         marginRight:'auto',
         borderRadius:15,
-        marginTop:20,
+        marginTop:10,
     },
     buttonRemover:{
         backgroundColor:'#74EFDE',
@@ -57,6 +58,16 @@ const stylesEditar = StyleSheet.create({
         borderRadius:15,
         marginTop:20,
         marginBottom:20,
+    },
+    buttonDeletar:{
+        backgroundColor:'#74EFDE',
+        border:'none',
+        padding:15,
+        width:'80%',
+        marginLeft:'auto',
+        marginRight:'auto',
+        borderRadius:15,
+        marginTop:0,
     },
     buttonTabelaAnestesicos:{
         marginTop:20,

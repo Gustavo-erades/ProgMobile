@@ -128,7 +128,7 @@ export default function Editar({navigation}){
                                     <TextInput style={stylesEditar.input} placeholder="Ex: Anestésico x%" keyboardType='default' onChangeText={text=>setDataRemover({...dataRemover,nomeRemover:text})}
                                     ref={refNomeRemover}/>
                                     <Tabela/>
-                                    <TouchableOpacity style={stylesEditar.buttonCadastrar} onPress={removerAnestesico}>
+                                    <TouchableOpacity style={stylesEditar.buttonDeletar} onPress={removerAnestesico}>
                                         <Text style={styles.buttonDetalhesText}>
                                             Deletar anestésico
                                         </Text>

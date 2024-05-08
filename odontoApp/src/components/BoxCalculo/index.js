@@ -1,7 +1,7 @@
 import { Text, View, TouchableOpacity, Alert, Modal } from 'react-native';
 import stylesBoxCalc from '../../style/styleBoxCalc';
 import stylesModalCalc from '../../style/stylesModalCalc';
-import {fetchBoxCalculo, fetchDadosBd} from '../../services/api.js';
+import {fetchBoxCalculo, fetchDadosBd, handleSubmitDetalhes} from '../../services/api.js';
 import React, { useState, useEffect } from "react";
 export default function  BoxCalculo(){
     //consumindo a API que retorna os dados do boxCalculo
@@ -25,6 +25,7 @@ export default function  BoxCalculo(){
     useEffect(() => {
         const loadAnestesiaCalculo2=async ()=>{
           try {
+            handleSubmitDetalhes({peso:anestesiaCalculo['pesoPaciente'],quant:anestesiaCalculo['maxPorKg'],vol:anestesiaCalculo['volTubetePaciente']})
             const responseCalculoAPI = await fetchBoxCalculo();
             setAnestesiaCalculo(responseCalculoAPI);
             const responseAnestesiaBd=await fetchDadosBd();
@@ -59,12 +60,12 @@ export default function  BoxCalculo(){
                 <View style={stylesBoxCalc.cardContainer}>
                     <View style={stylesBoxCalc.cardTextBox}>
                         <Text style={stylesBoxCalc.cardText}>
-                            Máximo de Tubetes: {anestesiaCalculo['quantTubete']}
+                            Máximo de Tubetes: {(doseMaxSal/mgPorTubete).toFixed(0)}
                         </Text>
                         <Text style={stylesBoxCalc.cardText}>
                             Máximo de mg: {anestesiaCalculo['maxPorKg']?anestesiaCalculo['maxPorKg']:anestesiaBd['doseMaxima']} mg</Text>
                         <Text style={stylesBoxCalc.cardText}>
-                            Miligrama por Tubetes: {anestesiaCalculo['mlPorTubete']} mg
+                            Miligrama por Tubetes: {mgPorTubete} mg
                         </Text>
                         <Text style={stylesBoxCalc.cardText}>
                             Máximo de mg para o peso: {anestesiaCalculo['maxDosePorPeso']} mg
