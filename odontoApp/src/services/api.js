@@ -33,6 +33,16 @@ export const fetchNomeAnestesico=async()=>{
     throw error;
   }
 }
+//Recebe os nomes dos anestésicos para o dropdown da home
+/*export const fetchNomes=async()=>{
+  try{
+    const response= await api.get("?action=nomesDropdown");
+    return response.data;
+  }catch(error){
+    console.error("Erro ao buscar os nomes dos anestésicos no banco de dados: tela api",error);
+    throw error;
+  }
+}*/
 //envia peso do paciente, dose máxima por quilo e volume do tubete
 export const handleSubmitDetalhes = (dataDetalhes) => {
   axios.post('http://192.168.0.8/testes/backendReact/api.php', dataDetalhes)

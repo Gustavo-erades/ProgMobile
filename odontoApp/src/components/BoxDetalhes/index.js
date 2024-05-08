@@ -1,8 +1,9 @@
-import { Text, View,TextInput, TouchableOpacity, Linking} from 'react-native';
+import { Text, View,TextInput} from 'react-native';
 import {useState} from 'react';
 import styleBoxDetalhes from '../../style/styleBoxDetalhes';
 import { CheckBox} from 'react-native-elements';
 import { handleSubmitDetalhes } from './../../services/api';
+import Tabela from '../Tabela';
 export default function BoxDetalhes(){
     //checkbox
     const [checkboxMarcado, setCheckboxMarcado]=useState(false);
@@ -11,9 +12,6 @@ export default function BoxDetalhes(){
         if(checkboxMarcado==false){
             handleSubmitDetalhes(data);
         }
-    }
-    const abrirTabela=()=>{
-        Linking.openURL("http://192.168.0.8/testes/backendReact/tabela");
     }
     //envia os dados para a API php
     const [data, setData] = useState({
@@ -50,11 +48,7 @@ export default function BoxDetalhes(){
             <View style={styleBoxDetalhes.checkboxView}>
                 <CheckBox checked={checkboxMarcado} title="Alterar cálculo padrão" size={32} checkedColor='#5BBCAF' uncheckedColor='red' required onPress={marcarCheckbox}/>
             </View>
-            <TouchableOpacity style={styleBoxDetalhes.buttonTabelaAnestesicos} onPress={abrirTabela}>
-                    <Text style={styleBoxDetalhes.buttonTabelaAnestesicosText}>
-                        Tabela de anestésicos
-                    </Text>
-            </TouchableOpacity>
+            <Tabela/>
         </View>        
     )
 }

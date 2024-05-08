@@ -4,7 +4,7 @@ import {useRef, useState} from 'react';
 import stylesEditar from '../../style/styleEditar';
 import styles from '../../style/styleHome';
 import { handleSubmitDeletarAnestesico, handleSubmitNovoAnestesico } from '../../services/api';
-import styleBoxDetalhes from '../../style/styleBoxDetalhes';
+import Tabela from '../../components/Tabela';
 export default function Editar({navigation}){
     //envia os dados para a API php (editar)
     const [data, setData] = useState({
@@ -61,9 +61,6 @@ export default function Editar({navigation}){
             Alert.alert("Erro ao remover anestésico!","Nenhum nome foi digitado. Consulte a tabela de anestésico para poder fazer a remoção.")
         }
     }
-    const abrirTabela=()=>{
-        Linking.openURL("http://192.168.0.8/testes/backendReact/tabela");
-    }
     return(
         <View style={{height:"100%",backgroundColor:"#fff"}}>
             <View style={stylesEditar.boxTitulo}>
@@ -113,11 +110,7 @@ export default function Editar({navigation}){
                             Remover
                         </Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={stylesEditar.buttonTabelaAnestesicos} onPress={abrirTabela}>
-                        <Text style={styleBoxDetalhes.buttonTabelaAnestesicosText}>
-                            Tabela de anestésicos
-                        </Text>
-                    </TouchableOpacity>
+                    <Tabela/>
                     <Modal 
                         animationType='none'
                         transparent={true}
@@ -134,11 +127,7 @@ export default function Editar({navigation}){
                                     </Text>
                                     <TextInput style={stylesEditar.input} placeholder="Ex: Anestésico x%" keyboardType='default' onChangeText={text=>setDataRemover({...dataRemover,nomeRemover:text})}
                                     ref={refNomeRemover}/>
-                                    <TouchableOpacity style={stylesEditar.buttonTabelaAnestesicos} onPress={abrirTabela}>
-                                        <Text style={styleBoxDetalhes.buttonTabelaAnestesicosText}>
-                                            Tabela de anestésicos
-                                        </Text>
-                                    </TouchableOpacity>
+                                    <Tabela/>
                                     <TouchableOpacity style={stylesEditar.buttonCadastrar} onPress={removerAnestesico}>
                                         <Text style={styles.buttonDetalhesText}>
                                             Deletar anestésico

@@ -1,16 +1,18 @@
 import { View, Text, TouchableOpacity, Modal, Alert} from "react-native";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { Dropdown } from 'react-native-element-dropdown';
 import styles from '../../style/styleHome';
-import DropdownComponent from '../../components/DropDownAnestesicos';
+import stylesPadrao from '../../style/styleDefault';
+import stylesDropDown from '../../style/styleDropDown';
 import BoxCalculo from '../../components/BoxCalculo';
 import BoxDetalhes from './../../components/BoxDetalhes/index';
-import stylesPadrao from '../../style/styleDefault';
-import {fetchNomeAnestesico} from '../../services/api.js'
+import { handleSubmitNome, fetchNomes} from '../../services/api';
 export default function Home({navigation}) {
+    //tela de cálculo
     const [modalVisibleCalc, setModalVisibleCalc]=useState(false);
     const chamaTelaCalc = () => {
-        console.log(nome)
-        if(nome!=''){
+        console.log(dataNome.nomeAnestesico)
+        if(dataNome.nomeAnestesico!=''){
             setModalVisibleCalc(true)
         }else{
             Alert.alert("Anestésico não selecionado","Por favor, selecione algum anestésico na barra acima para o cálculo porder ser efetuado")
@@ -18,7 +20,9 @@ export default function Home({navigation}) {
     };
     const fechaTelaCalc = () => {
         setModalVisibleCalc(false);
+        dataNome.nomeAnestesico='';
     }
+    //modal de cálculo
     const [visibilidadeModal, setVisibilidadeModal]=useState(null);
     const abrirModalDetalhes=()=>{
         setVisibilidadeModal(true)
@@ -27,16 +31,45 @@ export default function Home({navigation}) {
         setVisibilidadeModal(false)
         chamaTelaCalc()
     }
-    //child to parent
-    const [nome,setNome]=useState('');
-    const trocaNomeAnestesico=(value)=>{
-        setNome(value);
-    }
+    //dados do dropdown
+    const data = [
+        { label: 'Prilocaína 3%' },
+        { label: 'Mepivacaína 2%'},
+        { label: 'Mepivacaína 3%'},
+        { label: 'Articaína 4%' },
+        { label: 'Lidocaína 2%'},
+        { label: 'Lidocaína 3%'},
+        { label: 'Bupivacaína 0.5%'},
+      ];
+    //envia os dados para a API php
+    const [dataNome, setData] = useState({
+        nomeAnestesico: '',
+      });
     return (
         <View style={{height:'100%',backgroundColor:'#fff'}}>
             <View style={styles.header}>
                 <Text style={styles.titulo}>Anestésicos</Text>
-                <DropdownComponent dataChildToParent={trocaNomeAnestesico}/>
+                <Dropdown
+                    style={stylesDropDown.dropdown}
+                    placeholderStyle={stylesDropDown.placeholderStyle}
+                    selectedTextStyle={stylesDropDown.selectedTextStyle}
+                    inputSearchStyle={stylesDropDown.inputSearchStyle}
+                    iconStyle={stylesDropDown.iconStyle}
+                    data={data}
+                    search
+                    maxHeight={300}
+                    labelField="label"
+                    valueField="label"
+                    placeholder="Selecionar anestésico"
+                    searchPlaceholder="Pesquisar anestésico"
+                    value={dataNome.nomeAnestesico}
+                    onChange={item => {
+                    setData({ ...dataNome, nomeAnestesico: item });
+                    }}
+                    onConfirmSelectItem={
+                    handleSubmitNome(dataNome)
+                    }
+                />
                 <TouchableOpacity style={styles.botao} onPress={chamaTelaCalc}>
                     <Text style={styles.botaoTexto}>
                         Calcular
