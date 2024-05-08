@@ -1,4 +1,4 @@
-# App para calculos anestésicos
+# App para cálculos anestésicos
 ###
 >Esse projeto consiste no trabalho final da matéria de "Programação para dispositivos móveis" do curso de ensino superior de Análise e Desenvolvimento de Sistemas do Centro Universitário Estácio de Brasília do primeiro semestre de 2024.<br>
 ###
