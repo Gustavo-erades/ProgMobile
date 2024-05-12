@@ -1,4 +1,4 @@
-import {View, Text, TouchableOpacity, TextInput, ScrollView, Alert, Modal, Linking} from 'react-native';
+import {View, Text, TouchableOpacity, TextInput, ScrollView, Alert, Modal} from 'react-native';
 import stylesPadrao from '../../style/styleDefault';
 import {useRef, useState} from 'react';
 import stylesEditar from '../../style/styleEditar';
@@ -65,7 +65,7 @@ export default function Editar({navigation}){
         <View style={{height:"100%",backgroundColor:"#fff"}}>
             <View style={stylesEditar.boxTitulo}>
                 <Text style={stylesEditar.titulo}>
-                    Cadastrar novo anestésico
+                    Editar nestésicos
                 </Text>
             </View>
             <View style={stylesEditar.boxConteudo}>

@@ -5,13 +5,15 @@ const stylesEditar = StyleSheet.create({
         paddingTop:20,
         paddingBottom:20,
         backgroundColor:'#5BBCAF',
+        borderColor:'#293A3F'
     },
     titulo:{
         paddingLeft:8,
-        fontSize:16,
         fontWeight:'bold',
+        textTransform:'uppercase',//'#6AD9CE',
         textTransform:'uppercase',
-        color:'#fff'//'#6AD9CE',
+        color:'#F2F2F2',
+        textAlign:'center',
     },
     boxConteudo:{
         height:"75%",
