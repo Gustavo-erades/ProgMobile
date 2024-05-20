@@ -6,7 +6,7 @@ import stylesPadrao from '../../style/styleDefault';
 import stylesDropDown from '../../style/styleDropDown';
 import BoxCalculo from '../../components/BoxCalculo';
 import BoxDetalhes from './../../components/BoxDetalhes/index';
-import { handleSubmitNome, fetchNomes} from '../../services/api';
+import { handleSubmitNome, fetchNomesDropdown} from '../../services/api';
 export default function Home({navigation}) {
     //tela de cálculo
     const [modalVisibleCalc, setModalVisibleCalc]=useState(false);
@@ -32,22 +32,45 @@ export default function Home({navigation}) {
         chamaTelaCalc()
     }
     //dados do dropdown
-    const data = [
-        { label: 'Prilocaína 3%' },
-        { label: 'Mepivacaína 2%'},
-        { label: 'Mepivacaína 3%'},
-        { label: 'Articaína 4%' },
-        { label: 'Lidocaína 2%'},
-        { label: 'Lidocaína 3%'},
-        { label: 'Bupivacaína 0.5%'},
-      ];
+    const [dataDropTeste, setDataDropTeste] = useState([]);
+    recarregar=false;
+    //executado assim que a página for carregada
+    useEffect(() => {
+        async function loadDataDropTeste() {
+          try {
+            const responseDropTesteApi = await fetchNomesDropdown();
+            setDataDropTeste(responseDropTesteApi)
+          } catch (error) {
+            console.log('Erro ao buscar os dados na API (teste no dropdown)', error);
+          }
+        }
+        loadDataDropTeste();
+      }, []); 
+    //executado sempre que o elemento é clicado (recarrega os dados)
+    useEffect(() => {
+        async function loadDataDropTeste2() {
+          try {
+            const responseDropTesteApi = await fetchNomesDropdown();
+            setDataDropTeste(responseDropTesteApi)
+          } catch (error) {
+            console.log('Erro ao buscar os dados na API (teste no dropdown)', error);
+          }
+        }
+        if(recarregar){
+            loadDataDropTeste2();
+            recarregar=false
+        }
+      }, [recarregar]); 
+    function recarregaDropdown(){
+        recarregar=true;
+    }
     //envia os dados para a API php
     const [dataNome, setData] = useState({
         nomeAnestesico: '',
       });
     return (
         <View style={{height:'100%',backgroundColor:'#fff'}}>
-            <View style={styles.header}>
+            <View style={styles.header} onPress={recarregaDropdown}>
                 <Text style={styles.titulo}>Anestésicos</Text>
                 <Dropdown
                     style={stylesDropDown.dropdown}
@@ -55,7 +78,7 @@ export default function Home({navigation}) {
                     selectedTextStyle={stylesDropDown.selectedTextStyle}
                     inputSearchStyle={stylesDropDown.inputSearchStyle}
                     iconStyle={stylesDropDown.iconStyle}
-                    data={data}
+                    data={dataDropTeste}
                     search
                     maxHeight={300}
                     labelField="label"
@@ -64,10 +87,10 @@ export default function Home({navigation}) {
                     searchPlaceholder="Pesquisar anestésico"
                     value={dataNome.nomeAnestesico}
                     onChange={item => {
-                    setData({ ...dataNome, nomeAnestesico: item });
+                        setData({ ...dataNome, nomeAnestesico: item });
                     }}
                     onConfirmSelectItem={
-                    handleSubmitNome(dataNome)
+                        handleSubmitNome(dataNome)
                     }
                 />
                 <TouchableOpacity style={styles.botao} onPress={chamaTelaCalc}>

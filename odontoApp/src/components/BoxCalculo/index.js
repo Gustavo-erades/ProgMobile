@@ -37,7 +37,7 @@ export default function  BoxCalculo(){
         if (executarFuncao) {
             loadAnestesiaCalculo2();
             setExecutarFuncao(false);
-          }
+        }
       }, [executarFuncao]);
       const recarregar=()=>{
         setExecutarFuncao(true);
@@ -49,8 +49,8 @@ export default function  BoxCalculo(){
     }
     const numSal=parseFloat(anestesiaBd['porcentagem'])
     const numMgSal=(numSal*1000)/100;
-    const doseMaxSal=(parseFloat(anestesiaCalculo['pesoPaciente'])*parseFloat(anestesiaCalculo['maxPorKg']?anestesiaCalculo['maxPorKg']:anestesiaBd['doseMaxima'])).toFixed(1);
-    const mgPorTubete=(numMgSal*parseFloat(anestesiaCalculo['volTubetePaciente'])).toFixed(1)
+    const doseMaxSal=(parseFloat(anestesiaCalculo['pesoPaciente']!=undefined?anestesiaCalculo['pesoPaciente']:60)*parseFloat(anestesiaCalculo['maxPorKg']?anestesiaCalculo['maxPorKg']:anestesiaBd['doseMaxima'])).toFixed(1);
+    const mgPorTubete=(numMgSal*parseFloat(anestesiaCalculo['volTubetePaciente']?anestesiaCalculo['volTubetePaciente']:1.8)).toFixed(1)
     return (
         <View style={stylesBoxCalc.container}>
             <View style={stylesBoxCalc.card}>
