@@ -1,6 +1,7 @@
 import axios from 'axios';
+const localhost= 'http://172.20.10.8/testes/backendReact/api.php' //192.168.0.8
 const api = axios.create({
-  baseURL: "http://172.20.10.8/testes/backendReact/api.php",
+  baseURL: localhost,
   timeout: 1000,
 });
 //Recebe dados do cálculo
@@ -46,7 +47,7 @@ export const fetchNomesDropdown=async()=>{
 }
 //envia peso do paciente, dose máxima por quilo e volume do tubete
 export const handleSubmitDetalhes = (dataDetalhes) => {
-  axios.post('http://172.20.10.8/testes/backendReact/api.php', dataDetalhes)
+  axios.post(localhost, dataDetalhes)
     .then(response => {
       console.log('Resposta da API (detalhes):', response.data);
     })
@@ -56,7 +57,7 @@ export const handleSubmitDetalhes = (dataDetalhes) => {
 };
 //envia nome do anestésico
 export const handleSubmitNome = (dataNome) => {
-  axios.post('http://172.20.10.8/testes/backendReact/api.php', dataNome)
+  axios.post(localhost, dataNome)
     .then(response => {
       console.log('Resposta da API (dropdown):', response.data);
     })
@@ -66,7 +67,7 @@ export const handleSubmitNome = (dataNome) => {
 };
 //envia dados do novo anestésico (cadastro de anestésico)
 export const handleSubmitNovoAnestesico = (dataNovoAnestésico) => {
-  axios.post('http://172.20.10.8/testes/backendReact/api.php', dataNovoAnestésico)
+  axios.post(localhost, dataNovoAnestésico)
     .then(response => {
       console.log('Resposta da API (Editar):', response.data);
     })
@@ -76,7 +77,7 @@ export const handleSubmitNovoAnestesico = (dataNovoAnestésico) => {
 };
 //envia nome do anestésico a ser deletado (remover anestésico)
 export const handleSubmitDeletarAnestesico = (nomeRemoverAnestesico) => {
-  axios.post('http://172.20.10.8/testes/backendReact/api.php', nomeRemoverAnestesico)
+  axios.post(localhost, nomeRemoverAnestesico)
     .then(response => {
       console.log('Resposta da API (Remover):', response.data);
     })
