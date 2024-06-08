@@ -1,6 +1,6 @@
 import axios from 'axios';
-const localhost= 'http://172.20.10.8/testes/backendReact/api.php' //192.168.0.8
-const api = axios.create({
+const localhost= 'http://192.168.105.21/testes/backendReact/api.php' //192.168.0.8 |  172.20.10.8  |  172.20.10.4
+const api = axios.create({   
   baseURL: localhost,
   timeout: 1000,
 });
